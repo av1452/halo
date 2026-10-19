@@ -200,12 +200,13 @@
   cursor: pointer;
 }
 
-.swatch:has(input:checked) {
+/* Classes rather than :has(), which needs Safari 15.4 */
+.swatch.selected {
   box-shadow: 0 0 0 2px var(--surface-raised), 0 0 0 4px var(--text-primary);
 }
 
-.swatch:has(input:focus-visible),
-.glyphOption:has(input:focus-visible) {
+.swatch:focus-within,
+.glyphOption:focus-within {
   outline: 2.5px solid var(--accent);
   outline-offset: 3px;
 }
@@ -221,7 +222,7 @@
   cursor: pointer;
 }
 
-.glyphOption:has(input:checked) {
+.glyphOption.selected {
   background: var(--accent);
   color: var(--on-accent);
 }

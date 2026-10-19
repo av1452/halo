@@ -335,3 +335,9 @@
   font-size: var(--text-sm);
   color: var(--text-secondary);
 }
+
+@supports not (aspect-ratio: 1) {
+  .cameraPlaceholder {
+    min-height: 180px;
+  }
+}

@@ -29,6 +29,23 @@
   <body>
     <noscript>Halo needs JavaScript to run.</noscript>
     <div id="root"></div>
+    <script>
+      // ES5 on purpose: runs on old browsers that can't parse the app bundle
+      // (built for Safari 14+) and shows a message instead of a blank page.
+      ;(function () {
+        var supported = false
+        try {
+          supported = 'noModule' in document.createElement('script') && typeof Promise !== 'undefined' &&
+            new Function('var a = {}; a.b ||= 1; return a?.c ?? a.b')() === 1
+        } catch (e) {}
+        if (supported) return
+        var root = document.getElementById('root')
+        root.setAttribute('role', 'alert')
+        root.style.cssText = 'font-family:-apple-system,Helvetica,Arial,sans-serif;max-width:32em;margin:15vh auto;padding:0 24px;text-align:center;line-height:1.5'
+        root.innerHTML = '<h1 style="font-size:1.4em">Halo needs a newer browser</h1>' +
+          '<p>Halo works in Safari on iOS and iPadOS 14 or later, and in current versions of Chrome, Edge and Firefox. Please update your device or open Halo in a newer browser.</p>'
+      })()
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

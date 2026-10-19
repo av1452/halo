@@ -202,3 +202,10 @@
   display: inline;
   vertical-align: -2px;
 }
+
+/* Safari < 15 lacks aspect-ratio */
+@supports not (aspect-ratio: 1) {
+  .wallpaper {
+    min-height: 100px;
+  }
+}

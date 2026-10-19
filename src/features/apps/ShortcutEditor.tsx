@@ -103,7 +103,7 @@ export function ShortcutEditor({ open, shortcut, initial, onClose, onSaved }: Sh
           <legend>Color</legend>
           <div className={styles.swatches}>
             {TILE_COLORS.map((c) => (
-              <label key={c} className={styles.swatch} style={{ background: c }}>
+              <label key={c} className={form.color === c ? `${styles.swatch} ${styles.selected}` : styles.swatch} style={{ background: c }}>
                 <input type="radio" name="color" value={c} checked={form.color === c} onChange={() => set('color', c)} aria-label={c} />
               </label>
             ))}
@@ -113,13 +113,13 @@ export function ShortcutEditor({ open, shortcut, initial, onClose, onSaved }: Sh
         <fieldset className={styles.fieldset}>
           <legend>Symbol</legend>
           <div className={styles.glyphs}>
-            <label className={styles.glyphOption}>
+            <label className={form.glyph === '' ? `${styles.glyphOption} ${styles.selected}` : styles.glyphOption}>
               <input type="radio" name="glyph" value="" checked={form.glyph === ''} onChange={() => set('glyph', '')} />
               <span aria-hidden="true" className={styles.glyphLetter}>{(form.name.trim()[0] ?? 'A').toUpperCase()}</span>
               <span className="visually-hidden">Letter</span>
             </label>
             {Object.entries(GLYPHS).map(([key, { label, icon: Icon }]) => (
-              <label key={key} className={styles.glyphOption} title={label}>
+              <label key={key} className={form.glyph === key ? `${styles.glyphOption} ${styles.selected}` : styles.glyphOption} title={label}>
                 <input type="radio" name="glyph" value={key} checked={form.glyph === key} onChange={() => set('glyph', key)} />
                 <Icon aria-hidden="true" size={20} />
                 <span className="visually-hidden">{label}</span>
