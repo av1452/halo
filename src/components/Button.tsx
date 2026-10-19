@@ -1,8 +1,9 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react'
+import { buttonClassName, type ButtonVariant } from './buttonClassName'
 import styles from './Button.module.css'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'plain' | 'danger'
+  variant?: ButtonVariant
   size?: 'sm' | 'md'
   icon?: ReactNode
 }
@@ -11,7 +12,7 @@ export function Button({ variant = 'secondary', size = 'md', icon, className, ch
   return (
     <button
       type={type}
-      className={[styles.button, styles[variant], styles[size], className ?? ''].join(' ')}
+      className={[buttonClassName(variant, size), className ?? ''].join(' ')}
       {...rest}
     >
       {icon && <span className={styles.icon} aria-hidden="true">{icon}</span>}

@@ -19,7 +19,8 @@ body {
   font-size: var(--text-base);
   line-height: 1.4;
   color: var(--text-primary);
-  background: var(--surface-solid);
+  /* Transparent so the fixed wallpaper layer (z-index: -1) shows through */
+  background: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior-y: none;

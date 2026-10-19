@@ -1,15 +1,10 @@
-import { GlassCard } from './components/GlassCard'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { routes } from './app/routes'
+
+const router = createBrowserRouter(routes, {
+  basename: import.meta.env.BASE_URL.replace(/\/$/, '') || '/',
+})
 
 export default function App() {
-  return (
-    <>
-      <div className="halo-wallpaper" aria-hidden="true" />
-      <main style={{ padding: 24 }}>
-        <GlassCard padding="lg">
-          <h1>Halo</h1>
-          <p>Your digital world, beautifully unified.</p>
-        </GlassCard>
-      </main>
-    </>
-  )
+  return <RouterProvider router={router} />
 }
