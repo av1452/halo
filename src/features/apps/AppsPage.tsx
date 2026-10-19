@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { FolderCog, Plus, SearchX } from 'lucide-react'
 import { Button, IconButton } from '../../components/Button'
 import { ConfirmDialog } from '../../components/ConfirmDialog'
@@ -23,9 +23,17 @@ export default function AppsPage() {
   const filter = params.get('filter') ?? 'all'
   const [editing, setEditing] = useState(false)
   const [details, setDetails] = useState<Shortcut | null>(null)
-  const [editor, setEditor] = useState<EditorState>(null)
+  const location = useLocation()
+  const navigate = useNavigate()
+  // Quick actions elsewhere can ask this page to open the editor
+  const [editor, setEditor] = useState<EditorState>(() => ((location.state as { addShortcut?: boolean } | null)?.addShortcut ? { key: Date.now() } : null))
   const [foldersOpen, setFoldersOpen] = useState(false)
   const [pendingRemove, setPendingRemove] = useState<Shortcut | null>(null)
+
+  useEffect(() => {
+    // Clear the request so Back doesn't reopen the editor
+    if ((location.state as { addShortcut?: boolean } | null)?.addShortcut) navigate(location.pathname + location.search, { replace: true, state: null })
+  }, [location, navigate])
 
   const setParam = (key: string, value: string, fallback: string) => {
     const next = new URLSearchParams(params)
