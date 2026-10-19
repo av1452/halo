@@ -86,3 +86,24 @@ describe('Weather widget', () => {
     expect(await within(weather).findByRole('alert')).toHaveTextContent('Couldn’t reach the weather service')
   })
 })
+
+describe('Weather location privacy', () => {
+  afterEach(async () => {
+    const { weatherStore } = await import('../../src/features/home/widgetStores')
+    weatherStore.reset()
+  })
+
+  it('stores device location rounded to about 100 m', async () => {
+    const { weatherStore } = await import('../../src/features/home/widgetStores')
+    Object.defineProperty(navigator, 'geolocation', {
+      configurable: true,
+      value: { getCurrentPosition: (ok: PositionCallback) => ok({ coords: { latitude: 51.507351, longitude: -0.127758 } } as GeolocationPosition) },
+    })
+    vi.spyOn(globalThis, 'fetch').mockRejectedValue(new TypeError('offline'))
+    renderApp('/')
+    await userEvent.click(within(screen.getByRole('region', { name: 'Weather' })).getByRole('button', { name: 'Set location' }))
+    await userEvent.click(screen.getByRole('button', { name: 'Use my current location' }))
+    expect(weatherStore.get().place).toMatchObject({ latitude: 51.507, longitude: -0.128 })
+    vi.restoreAllMocks()
+  })
+})

@@ -7,6 +7,8 @@ import { searchPlaces, WeatherError, type Place } from '../../../services/weathe
 import { weatherStore } from '../widgetStores'
 import styles from '../home.module.css'
 
+const roundCoord = (value: number) => Math.round(value * 1000) / 1000
+
 export function PlaceSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<Place[] | null>(null)
@@ -37,7 +39,8 @@ export function PlaceSheet({ open, onClose }: { open: boolean; onClose: () => vo
     }
     setStatus('Waiting for location permission…')
     navigator.geolocation.getCurrentPosition(
-      (pos) => choose({ name: 'Current location', latitude: pos.coords.latitude, longitude: pos.coords.longitude }),
+      // Keep only ~100 m precision: enough for weather, and all Halo ever stores or sends
+      (pos) => choose({ name: 'Current location', latitude: roundCoord(pos.coords.latitude), longitude: roundCoord(pos.coords.longitude) }),
       (err) => setStatus(err.code === err.PERMISSION_DENIED ? 'Location permission was denied. Search for a city instead.' : 'Couldn’t get your location.'),
       { maximumAge: 600_000, timeout: 15_000 },
     )
