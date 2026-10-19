@@ -1,4 +1,7 @@
 import type { ReactNode } from 'react'
+import { Search } from 'lucide-react'
+import { setSearchOpen } from '../features/search/searchStore'
+import { IconButton } from './Button'
 import styles from './Page.module.css'
 
 interface PageProps {
@@ -16,7 +19,10 @@ export function Page({ title, subtitle, actions, children }: PageProps) {
           <h1 className={styles.title}>{title}</h1>
           {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
         </div>
-        {actions && <div className={styles.actions}>{actions}</div>}
+        <div className={styles.actions}>
+          <IconButton label="Search Halo" title="Search Halo (⌘K)" icon={<Search />} onClick={() => setSearchOpen(true)} />
+          {actions}
+        </div>
       </header>
       {children}
     </div>

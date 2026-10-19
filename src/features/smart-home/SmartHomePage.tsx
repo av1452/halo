@@ -20,8 +20,15 @@ export default function SmartHomePage() {
   const { rooms, devices, scenes } = useSmartHome()
   const { temperatureUnit } = preferencesStore.use()
   const [params, setParams] = useSearchParams()
-  const [openDevice, setOpenDevice] = useState<string | null>(null)
   const [confirmReset, setConfirmReset] = useState(false)
+  // The open device lives in the URL so search results and Back work
+  const openDevice = params.get('device')
+  const setOpenDevice = (id: string | null) => {
+    const next = new URLSearchParams(params)
+    if (id) next.set('device', id)
+    else next.delete('device')
+    setParams(next, { replace: true })
+  }
   const roomFilter = rooms.some((r) => r.id === params.get('room')) ? params.get('room')! : 'all'
 
   const lightsOn = devices.filter((d) => d.type === 'light' && d.on).length

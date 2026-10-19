@@ -8,7 +8,7 @@ import { SearchField } from '../../components/SearchField'
 import { AppStoreError, searchApps, type AppStoreApp } from '../../services/appStore'
 import { AppDetailSheet, type Selection } from './AppDetailSheet'
 import { CATALOG, CATEGORY_LABELS, matchesListing, type DiscoverCategory, type Listing } from './catalog'
-import { discoverStore, recordViewed, type SavedApp } from './discoverStore'
+import { discoverStore, type SavedApp } from './discoverStore'
 import { ListingCard } from './ListingCard'
 import styles from './discover.module.css'
 
@@ -21,7 +21,8 @@ export default function DiscoverPage() {
   const query = params.get('q') ?? ''
   const category = CATEGORIES.find((c) => c === params.get('category')) ?? 'all'
   const { favorites, recents } = discoverStore.use()
-  const [selection, setSelection] = useState<Selection | null>(null)
+  // Live search results are held in state; curated picks are addressed by ?app= so search can link to them
+  const [liveSelection, setLiveSelection] = useState<Selection | null>(null)
   const [live, setLive] = useState<LiveState>(null)
 
   const setParam = (key: string, value: string, fallback: string) => {
@@ -31,15 +32,20 @@ export default function DiscoverPage() {
     setParams(next, { replace: true })
   }
 
-  const open = (sel: Selection) => {
-    recordViewed({ id: sel.id, name: sel.name, developer: sel.developer, iconUrl: sel.iconUrl })
-    setSelection(sel)
-  }
-  const openListing = (l: Listing) => open({ id: l.id, name: l.name, developer: l.developer, summary: l.summary, website: l.website, curated: true })
+  const appParam = Number(params.get('app'))
+  const linked = CATALOG.find((l) => l.id === appParam)
+  const selection: Selection | null =
+    liveSelection ?? (linked ? { id: linked.id, name: linked.name, developer: linked.developer, summary: linked.summary, website: linked.website, curated: true } : null)
+
+  const openListing = (l: Listing) => setParam('app', String(l.id), '')
   const openSaved = (s: SavedApp) => {
     const listing = CATALOG.find((l) => l.id === s.id)
     if (listing) openListing(listing)
-    else open({ ...s, curated: false })
+    else setLiveSelection({ ...s, curated: false })
+  }
+  const closeDetail = () => {
+    setLiveSelection(null)
+    setParam('app', '', '')
   }
 
   const searchStore = async (e?: FormEvent) => {
@@ -86,7 +92,7 @@ export default function DiscoverPage() {
                   developer={a.developer}
                   detail={[a.genre, a.price].filter(Boolean).join(' · ')}
                   iconUrl={a.iconUrl}
-                  onOpen={() => open({ id: a.id, name: a.name, developer: a.developer, iconUrl: a.iconUrl, curated: false })}
+                  onOpen={() => setLiveSelection({ id: a.id, name: a.name, developer: a.developer, iconUrl: a.iconUrl, curated: false })}
                 />
               ))}
             </ul>
@@ -139,7 +145,7 @@ export default function DiscoverPage() {
         <p className={styles.privacy}>Halo picks are a manually maintained list, not paid placements or live rankings.</p>
       </PageSection>
 
-      {selection && <AppDetailSheet key={selection.id} selection={selection} onClose={() => setSelection(null)} />}
+      {selection && <AppDetailSheet key={selection.id} selection={selection} onClose={closeDetail} />}
     </Page>
   )
 }

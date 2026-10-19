@@ -7,7 +7,7 @@ import { Sheet } from '../../components/Sheet'
 import { AppStoreError, lookupApp, type AppStoreApp } from '../../services/appStore'
 import { ShortcutEditor } from '../apps/ShortcutEditor'
 import { appStoreUrl } from './catalog'
-import { discoverStore, toggleDiscoverFavorite, type SavedApp } from './discoverStore'
+import { discoverStore, recordViewed, toggleDiscoverFavorite, type SavedApp } from './discoverStore'
 import { ListingIcon } from './ListingIcon'
 import styles from './discover.module.css'
 
@@ -25,6 +25,10 @@ export function AppDetailSheet({ selection, onClose }: { selection: Selection; o
   const [adding, setAdding] = useState(false)
   const { favorites } = discoverStore.use()
   const favorite = favorites.some((f) => f.id === selection.id)
+
+  useEffect(() => {
+    recordViewed({ id: selection.id, name: selection.name, developer: selection.developer, iconUrl: selection.iconUrl })
+  }, [selection.id, selection.name, selection.developer, selection.iconUrl])
 
   useEffect(() => {
     let cancelled = false

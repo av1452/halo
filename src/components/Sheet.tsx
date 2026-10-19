@@ -12,11 +12,13 @@ interface SheetProps {
   footer?: ReactNode
   /** 'sheet' slides up on phones; 'alert' is a small centered confirmation */
   kind?: 'sheet' | 'alert'
+  /** 'top' anchors the panel near the top, e.g. for search */
+  placement?: 'bottom' | 'top'
 }
 
 const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
 
-export function Sheet({ open, title, onClose, children, footer, kind = 'sheet' }: SheetProps) {
+export function Sheet({ open, title, onClose, children, footer, kind = 'sheet', placement = 'bottom' }: SheetProps) {
   const panelRef = useRef<HTMLDivElement>(null)
   const titleId = useId()
   const onCloseRef = useRef(onClose)
@@ -64,7 +66,7 @@ export function Sheet({ open, title, onClose, children, footer, kind = 'sheet' }
   if (!open) return null
 
   return createPortal(
-    <div className={styles.backdrop} onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
+    <div className={placement === 'top' ? `${styles.backdrop} ${styles.top}` : styles.backdrop} onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
       <div
         ref={panelRef}
         role={kind === 'alert' ? 'alertdialog' : 'dialog'}

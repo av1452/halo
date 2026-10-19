@@ -72,6 +72,17 @@
   }
 }
 
+.backdrop.top {
+  align-items: flex-start;
+  padding-top: calc(var(--space-4) + var(--safe-top));
+}
+
+@media (min-width: 700px) {
+  .backdrop.top {
+    padding-top: 12vh;
+  }
+}
+
 @keyframes fade {
   from {
     opacity: 0;

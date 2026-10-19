@@ -108,7 +108,8 @@ export default function SettingsPage() {
   const { hash } = useLocation()
 
   useEffect(() => {
-    if (hash) document.getElementById(hash.slice(1))?.scrollIntoView({ block: 'start' })
+    if (hash) // Optional call: scrollIntoView is missing in some older engines (and jsdom)
+    document.getElementById(hash.slice(1))?.scrollIntoView?.({ block: 'start' })
   }, [hash])
 
   return (
