@@ -1,0 +1,75 @@
+/*
+ * Glass surfaces. Every glass class starts from an opaque-enough fallback and
+ * only becomes translucent when backdrop-filter is supported, so text stays
+ * legible on any engine.
+ */
+
+.glass,
+.glass-thin,
+.glass-chrome {
+  position: relative;
+  background-color: rgba(var(--surface-rgb), 0.94);
+  border: 0.5px solid var(--glass-edge-low);
+  box-shadow: var(--shadow-md);
+}
+
+.glass-thin {
+  box-shadow: var(--shadow-sm);
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .glass,
+  .glass-chrome {
+    background-color: rgba(var(--surface-rgb), var(--glass-alpha));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  }
+
+  .glass-thin {
+    background-color: rgba(var(--surface-rgb), calc(var(--glass-alpha) * 0.6));
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 0.6)) saturate(var(--glass-saturate));
+    backdrop-filter: blur(calc(var(--glass-blur) * 0.6)) saturate(var(--glass-saturate));
+  }
+
+  /* Chrome (tab bar, sidebar) sits over moving content, so a touch more opaque */
+  .glass-chrome {
+    background-color: rgba(var(--surface-rgb), calc(var(--glass-alpha) + 0.12));
+  }
+}
+
+/* Edge lighting: a soft specular highlight along the top edge */
+.glass::before,
+.glass-chrome::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    var(--glass-edge) 0%,
+    rgba(255, 255, 255, 0) 1.5px,
+    rgba(255, 255, 255, 0) calc(100% - 1px),
+    var(--glass-edge-low) 100%
+  );
+  opacity: 0.7;
+}
+
+/* Users who ask for reduced transparency get solid surfaces */
+:root[data-transparency='reduced'] .glass,
+:root[data-transparency='reduced'] .glass-thin,
+:root[data-transparency='reduced'] .glass-chrome {
+  background-color: var(--surface-solid);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass,
+  .glass-thin,
+  .glass-chrome {
+    background-color: var(--surface-solid);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
