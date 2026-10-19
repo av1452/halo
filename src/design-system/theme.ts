@@ -4,7 +4,10 @@ export type GlassIntensity = 'subtle' | 'balanced' | 'vivid'
 export interface AccentColor {
   id: string
   name: string
-  hex: string
+  /** Darker variant for light mode: ≥4.5:1 under white text and on light surfaces */
+  light: string
+  /** Brighter variant for dark mode: ≥4.5:1 as text on dark surfaces */
+  dark: string
 }
 
 export interface Wallpaper {
@@ -16,15 +19,16 @@ export interface Wallpaper {
   dark: string
 }
 
+// Variants were chosen with WCAG contrast calculations; theme.test.ts enforces them.
 export const ACCENTS: readonly AccentColor[] = [
-  { id: 'blue', name: 'Blue', hex: '#0a84ff' },
-  { id: 'indigo', name: 'Indigo', hex: '#5e5ce6' },
-  { id: 'purple', name: 'Purple', hex: '#bf5af2' },
-  { id: 'pink', name: 'Pink', hex: '#ff375f' },
-  { id: 'orange', name: 'Orange', hex: '#ff9f0a' },
-  { id: 'green', name: 'Green', hex: '#30b158' },
-  { id: 'teal', name: 'Teal', hex: '#40b3c8' },
-  { id: 'graphite', name: 'Graphite', hex: '#8e8e93' },
+  { id: 'blue', name: 'Blue', light: '#0a6cd6', dark: '#0a84ff' },
+  { id: 'indigo', name: 'Indigo', light: '#4f4dd6', dark: '#7d7aff' },
+  { id: 'purple', name: 'Purple', light: '#8e3fc4', dark: '#bf5af2' },
+  { id: 'pink', name: 'Pink', light: '#c8204a', dark: '#ff375f' },
+  { id: 'orange', name: 'Orange', light: '#a85400', dark: '#ff9f0a' },
+  { id: 'green', name: 'Green', light: '#1d7a3a', dark: '#30d158' },
+  { id: 'teal', name: 'Teal', light: '#13758a', dark: '#40c8e0' },
+  { id: 'graphite', name: 'Graphite', light: '#5f5f64', dark: '#98989d' },
 ]
 
 export const WALLPAPERS: readonly Wallpaper[] = [
@@ -92,6 +96,27 @@ export function hexToRgb(hex: string): string {
   return `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`
 }
 
+function channel(c: number) {
+  const v = c / 255
+  return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4
+}
+
+/** WCAG relative luminance of a #rrggbb colour. */
+export function luminance(hex: string) {
+  const [r, g, b] = hexToRgb(hex).split(', ').map(Number)
+  return 0.2126 * channel(r) + 0.7152 * channel(g) + 0.0722 * channel(b)
+}
+
+export function contrastRatio(a: string, b: string) {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x)
+  return (hi + 0.05) / (lo + 0.05)
+}
+
+/** White text where it meets AA on the accent, otherwise black. */
+export function textOn(hex: string) {
+  return contrastRatio('#ffffff', hex) >= 4.5 ? '#ffffff' : '#000000'
+}
+
 export function findAccent(id: string): AccentColor {
   return ACCENTS.find((a) => a.id === id) ?? ACCENTS[0]
 }
@@ -113,8 +138,10 @@ export function applyTheme(settings: ThemeSettings, prefersDark: boolean, root =
   root.dataset.motion = settings.reduceMotion ? 'reduced' : 'full'
   root.dataset.transparency = settings.reduceTransparency ? 'reduced' : 'full'
   root.dataset.contrast = settings.increaseContrast ? 'more' : 'normal'
-  root.style.setProperty('--accent', accent.hex)
-  root.style.setProperty('--accent-rgb', hexToRgb(accent.hex))
+  const accentHex = mode === 'dark' ? accent.dark : accent.light
+  root.style.setProperty('--accent', accentHex)
+  root.style.setProperty('--accent-rgb', hexToRgb(accentHex))
+  root.style.setProperty('--on-accent', textOn(accentHex))
   const gradient = mode === 'dark' ? wallpaper.dark : wallpaper.light
   root.style.setProperty(
     '--wallpaper',

@@ -11,7 +11,7 @@
   justify-content: space-between;
   gap: var(--space-4);
   color: var(--text-on-wallpaper);
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.18);
+  text-shadow: var(--text-on-wallpaper-shadow);
 }
 
 .titles {
@@ -28,7 +28,6 @@
 .subtitle {
   margin-top: var(--space-1);
   font-size: var(--text-base);
-  opacity: 0.85;
 }
 
 .actions {
@@ -57,7 +56,7 @@
   font-size: var(--text-lg);
   font-weight: var(--weight-semibold);
   letter-spacing: -0.01em;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.18);
+  text-shadow: var(--text-on-wallpaper-shadow);
 }
 
 .empty {

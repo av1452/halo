@@ -1,4 +1,4 @@
-import { applyTheme, DEFAULT_THEME, findAccent, hexToRgb, resolveAppearance } from './theme'
+import { ACCENTS, applyTheme, contrastRatio, DEFAULT_THEME, findAccent, hexToRgb, resolveAppearance, textOn } from './theme'
 
 describe('theme', () => {
   it('resolves system appearance from the media preference', () => {
@@ -23,6 +23,7 @@ describe('theme', () => {
     expect(root.dataset.glass).toBe('vivid')
     expect(root.dataset.motion).toBe('reduced')
     expect(root.style.getPropertyValue('--accent')).toBe('#ff375f')
+    expect(root.style.getPropertyValue('--on-accent')).toBe('#000000')
   })
 })
 
@@ -37,5 +38,21 @@ describe('custom wallpaper', () => {
     const root = document.createElement('html')
     applyTheme({ ...DEFAULT_THEME, wallpaper: 'custom' }, false, root, null)
     expect(root.style.getPropertyValue('--wallpaper')).not.toContain('url(')
+  })
+})
+
+describe('accent contrast (WCAG AA)', () => {
+  it.each(ACCENTS.map((a) => [a.name, a] as const))('%s meets 4.5:1 in both modes', (_name, accent) => {
+    // Text on accent fills
+    expect(contrastRatio(textOn(accent.light), accent.light)).toBeGreaterThanOrEqual(4.5)
+    expect(contrastRatio(textOn(accent.dark), accent.dark)).toBeGreaterThanOrEqual(4.5)
+    // Accent used as text on the base surfaces
+    expect(contrastRatio(accent.light, '#f2f2f7')).toBeGreaterThanOrEqual(4.5)
+    expect(contrastRatio(accent.dark, '#1c1c1e')).toBeGreaterThanOrEqual(4.5)
+  })
+
+  it('computes known ratios', () => {
+    expect(contrastRatio('#000000', '#ffffff')).toBeCloseTo(21, 0)
+    expect(textOn('#0a6cd6')).toBe('#ffffff')
   })
 })

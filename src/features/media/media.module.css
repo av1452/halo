@@ -207,6 +207,5 @@
 .footnote {
   font-size: var(--text-xs);
   color: var(--text-on-wallpaper);
-  opacity: 0.85;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+  text-shadow: var(--text-on-wallpaper-shadow);
 }

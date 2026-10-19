@@ -7,7 +7,7 @@ import { SegmentedControl } from '../../components/SegmentedControl'
 import { showToast } from '../../components/toastStore'
 import { Toggle } from '../../components/Toggle'
 import { removeCustomWallpaper, saveCustomWallpaper, useCustomWallpaperUrl } from '../../design-system/customWallpaper'
-import { ACCENTS, CUSTOM_WALLPAPER, WALLPAPERS, type Appearance, type GlassIntensity } from '../../design-system/theme'
+import { ACCENTS, CUSTOM_WALLPAPER, textOn, WALLPAPERS, type Appearance, type GlassIntensity } from '../../design-system/theme'
 import { themeStore, updateTheme } from '../../design-system/themeStore'
 import { smartHome } from '../../integrations/smart-home'
 import { DataSection } from './DataSection'
@@ -150,7 +150,7 @@ export default function SettingsPage() {
                       aria-label={a.name}
                       title={a.name}
                       className={styles.accent}
-                      style={{ background: a.hex }}
+                      style={{ background: theme.appearance === 'dark' ? a.dark : a.light, color: textOn(theme.appearance === 'dark' ? a.dark : a.light) }}
                       onClick={() => updateTheme({ accent: a.id })}
                     >
                       {theme.accent === a.id && <Check size={16} aria-hidden="true" />}

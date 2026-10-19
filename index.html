@@ -15,6 +15,16 @@
     <meta name="apple-mobile-web-app-title" content="Halo" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Halo — Your Digital Home Hub</title>
+    <script>
+      // Set the colour theme before first paint so dark-mode users never see
+      // a light flash. Mirrors resolveAppearance() in src/design-system/theme.ts.
+      try {
+        var saved = JSON.parse(localStorage.getItem('halo:theme') || 'null')
+        var appearance = (saved && saved.data && saved.data.appearance) || 'system'
+        var dark = appearance === 'dark' || (appearance === 'system' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <noscript>Halo needs JavaScript to run.</noscript>
