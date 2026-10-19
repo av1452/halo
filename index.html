@@ -3,12 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <link rel="icon" type="image/svg+xml" href="/icons/halo.svg" />
-    <meta name="theme-color" content="#f2f2f7" />
     <meta name="description" content="Halo — Your digital world, beautifully unified." />
+    <meta name="theme-color" content="#f2f2f7" />
+    <link rel="icon" type="image/svg+xml" href="/icons/halo.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/halo-192.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <!-- iOS: home screen icon, title and standalone behaviour (older iOS ignores the manifest) -->
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Halo" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Halo — Your Digital Home Hub</title>
   </head>
   <body>
+    <noscript>Halo needs JavaScript to run.</noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -1,5 +1,5 @@
 import {
-  Accessibility, Compass, Database, Folder, Globe, Info, LayoutDashboard, Lightbulb, Music, Palette, Settings, Shield, Sparkles, Store,
+  Accessibility, Compass, Database, Download, Folder, Globe, Info, LayoutDashboard, Lightbulb, Music, Palette, Settings, Shield, Sparkles, Store,
   type LucideIcon,
 } from 'lucide-react'
 import { SECTIONS } from '../../app/sections'
@@ -34,6 +34,7 @@ export const GROUP_ORDER: SearchGroup[] = ['Sections', 'Apps', 'Smart Home', 'Me
 const SETTINGS_ENTRIES: { title: string; hash: string; keywords: string; icon: LucideIcon }[] = [
   { title: 'Appearance', hash: 'appearance', keywords: 'theme dark light mode accent color colour wallpaper background glass blur', icon: Palette },
   { title: 'Accessibility', hash: 'accessibility', keywords: 'reduce motion transparency contrast animation', icon: Accessibility },
+  { title: 'Install Halo', hash: 'install', keywords: 'install add home screen pwa offline app standalone', icon: Download },
   { title: 'Data & Backup', hash: 'data', keywords: 'export import backup reset erase restore json', icon: Database },
   { title: 'Privacy', hash: 'privacy', keywords: 'privacy data external services tracking network', icon: Shield },
   { title: 'About Halo', hash: 'about', keywords: 'version about independent', icon: Info },

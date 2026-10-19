@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Halo — Offline</title>
+    <style>
+      :root { color-scheme: light dark; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+      body {
+        margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; box-sizing: border-box;
+        background: linear-gradient(160deg, #6f8ff0 0%, #a07fd8 50%, #f0a0b8 100%); color: #1c1c1e;
+      }
+      @media (prefers-color-scheme: dark) {
+        body { background: linear-gradient(160deg, #10183a 0%, #2a1a48 50%, #3a1530 100%); color: #f2f2f7; }
+        main { background: rgba(30, 30, 34, 0.9) !important; }
+      }
+      main { max-width: 360px; padding: 32px 28px; border-radius: 28px; text-align: center; background: rgba(255, 255, 255, 0.9); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2); }
+      img { width: 64px; height: 64px; }
+      h1 { font-size: 1.4rem; margin: 16px 0 8px; }
+      p { margin: 0 0 20px; line-height: 1.45; opacity: 0.75; }
+      button { font: inherit; font-weight: 600; border: 0; border-radius: 999px; padding: 12px 22px; background: #0a84ff; color: #fff; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img src="icons/halo.svg" alt="" />
+      <h1>You’re offline</h1>
+      <p>Halo couldn’t load this page without a connection. Once you’ve opened Halo online, it works offline next time.</p>
+      <button type="button" onclick="location.reload()">Try again</button>
+    </main>
+  </body>
+</html>

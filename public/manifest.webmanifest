@@ -1,0 +1,23 @@
+{
+  "name": "Halo — Your Digital Home Hub",
+  "short_name": "Halo",
+  "description": "Your digital world, beautifully unified. Apps, smart-home controls, media and widgets in one place.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1c1c1e",
+  "theme_color": "#6f74e8",
+  "categories": ["productivity", "lifestyle", "utilities"],
+  "icons": [
+    { "src": "icons/halo-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/halo-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/halo-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/halo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Smart Home", "url": "./smart-home", "icons": [{ "src": "icons/halo-192.png", "sizes": "192x192" }] },
+    { "name": "Apps", "url": "./apps", "icons": [{ "src": "icons/halo-192.png", "sizes": "192x192" }] }
+  ]
+}

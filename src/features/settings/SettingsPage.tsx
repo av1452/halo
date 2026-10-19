@@ -11,6 +11,7 @@ import { ACCENTS, CUSTOM_WALLPAPER, WALLPAPERS, type Appearance, type GlassInten
 import { themeStore, updateTheme } from '../../design-system/themeStore'
 import { smartHome } from '../../integrations/smart-home'
 import { DataSection } from './DataSection'
+import { InstallSection } from './InstallSection'
 import { preferencesStore, updatePreferences, type TemperatureUnit } from './preferencesStore'
 import { SettingsGroup, SettingsRow } from './SettingsList'
 import styles from './settings.module.css'
@@ -190,6 +191,8 @@ export default function SettingsPage() {
               control={<Link to="/smart-home" className={styles.rowLink}>Open</Link>}
             />
           </SettingsGroup>
+
+          <InstallSection />
 
           <DataSection />
 

@@ -3,6 +3,7 @@ import { copyFileSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import react from '@vitejs/plugin-react'
 import { defineConfig, type Plugin } from 'vite'
+import { serviceWorker } from './scripts/serviceWorkerPlugin.ts'
 
 /**
  * GitHub Pages has no SPA rewrites; serving the app shell as 404.html lets
@@ -29,7 +30,11 @@ const base = process.env.HALO_BASE ?? '/'
 
 export default defineConfig({
   base,
-  plugins: [react(), spaFallback()],
+  plugins: [
+    react(),
+    spaFallback(),
+    serviceWorker({ template: 'src/pwa/sw-template.js', publicDir: 'public', version: pkg.version }),
+  ],
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
   },
