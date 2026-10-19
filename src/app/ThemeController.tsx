@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { applyTheme } from '../design-system/theme'
+import { useCustomWallpaperUrl } from '../design-system/customWallpaper'
+import { applyTheme, CUSTOM_WALLPAPER } from '../design-system/theme'
 import { themeStore } from '../design-system/themeStore'
 
 const DARK_QUERY = '(prefers-color-scheme: dark)'
@@ -25,6 +26,7 @@ function usePrefersDark() {
 export function ThemeController() {
   const theme = themeStore.use()
   const prefersDark = usePrefersDark()
-  useEffect(() => applyTheme(theme, prefersDark), [theme, prefersDark])
+  const customUrl = useCustomWallpaperUrl(theme.wallpaper === CUSTOM_WALLPAPER)
+  useEffect(() => applyTheme(theme, prefersDark, document.documentElement, customUrl), [theme, prefersDark, customUrl])
   return null
 }

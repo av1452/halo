@@ -77,3 +77,7 @@ export function applyBackup(backup: BackupFile): ImportReport {
 export function resetAllStores() {
   allStores().forEach((s) => s.reset())
 }
+
+export function exportFileName(date = new Date()) {
+  return `halo-backup-${date.toISOString().slice(0, 10)}.json`
+}

@@ -101,7 +101,9 @@ export function findWallpaper(id: string): Wallpaper {
 }
 
 /** Writes theme state onto <html> so the CSS tokens can react to it. */
-export function applyTheme(settings: ThemeSettings, prefersDark: boolean, root = document.documentElement) {
+export const CUSTOM_WALLPAPER = 'custom'
+
+export function applyTheme(settings: ThemeSettings, prefersDark: boolean, root = document.documentElement, customWallpaperUrl?: string | null) {
   const mode = resolveAppearance(settings.appearance, prefersDark)
   const accent = findAccent(settings.accent)
   const wallpaper = findWallpaper(settings.wallpaper)
@@ -113,7 +115,11 @@ export function applyTheme(settings: ThemeSettings, prefersDark: boolean, root =
   root.dataset.contrast = settings.increaseContrast ? 'more' : 'normal'
   root.style.setProperty('--accent', accent.hex)
   root.style.setProperty('--accent-rgb', hexToRgb(accent.hex))
-  root.style.setProperty('--wallpaper', mode === 'dark' ? wallpaper.dark : wallpaper.light)
+  const gradient = mode === 'dark' ? wallpaper.dark : wallpaper.light
+  root.style.setProperty(
+    '--wallpaper',
+    settings.wallpaper === CUSTOM_WALLPAPER && customWallpaperUrl ? `url("${customWallpaperUrl}") center / cover no-repeat, ${gradient}` : gradient,
+  )
 
   const meta = document.querySelector('meta[name="theme-color"]')
   if (meta) meta.setAttribute('content', mode === 'dark' ? '#000000' : '#f2f2f7')

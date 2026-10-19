@@ -25,3 +25,17 @@ describe('theme', () => {
     expect(root.style.getPropertyValue('--accent')).toBe('#ff375f')
   })
 })
+
+describe('custom wallpaper', () => {
+  it('layers the image over the gradient fallback', () => {
+    const root = document.createElement('html')
+    applyTheme({ ...DEFAULT_THEME, wallpaper: 'custom' }, false, root, 'blob:abc')
+    expect(root.style.getPropertyValue('--wallpaper')).toMatch(/^url\("blob:abc"\) center \/ cover no-repeat, /)
+  })
+
+  it('falls back to a gradient when no image is stored', () => {
+    const root = document.createElement('html')
+    applyTheme({ ...DEFAULT_THEME, wallpaper: 'custom' }, false, root, null)
+    expect(root.style.getPropertyValue('--wallpaper')).not.toContain('url(')
+  })
+})
