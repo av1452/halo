@@ -1,4 +1,5 @@
 import { Outlet, ScrollRestoration } from 'react-router-dom'
+import { Toaster } from '../components/Toaster'
 import { Sidebar, TabBar } from './Navigation'
 import { ThemeController } from './ThemeController'
 import styles from './AppShell.module.css'
@@ -16,6 +17,7 @@ export function AppShell() {
         </div>
       </main>
       <TabBar />
+      <Toaster />
       <ScrollRestoration />
     </>
   )

@@ -61,8 +61,8 @@ npm run preview    # serve the production build locally
    bottom tab bar on iPhone, sidebar on iPad/desktop, safe-area handling.
 4. Storage layer: versioned LocalStorage preferences, IndexedDB for user data,
    export/import with validation.
-5. Apps launcher: shortcuts, folders, favourites, edit/reorder, custom URLs.
-6. Home dashboard: customizable widgets (clock, weather, favourites, scenes,
+5. Apps launcher: shortcuts, folders, favorites, edit/reorder, custom URLs.
+6. Home dashboard: customizable widgets (clock, weather, favorites, scenes,
    media, notes), edit mode, persistence.
 7. Smart Home demo mode behind a `SmartHomeProvider` interface.
 8. Media destinations and a Now Playing card that only reports real sessions.
