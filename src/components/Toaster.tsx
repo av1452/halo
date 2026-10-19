@@ -7,7 +7,7 @@ export function Toaster() {
   return (
     <div className={styles.region} role="status" aria-live="polite">
       {toasts.map((t) => (
-        <div key={t.id} className={`glass ${styles.toast} ${t.tone ? styles[t.tone] : ''}`}>
+        <div key={t.id} className={`glass-thick ${styles.toast} ${t.tone ? styles[t.tone] : ''}`}>
           <p className={styles.message}>{t.message}</p>
           {t.actions && (
             <div className={styles.actions}>

@@ -70,7 +70,7 @@ export function Sheet({ open, title, onClose, children, footer, kind = 'sheet' }
         role={kind === 'alert' ? 'alertdialog' : 'dialog'}
         aria-modal="true"
         aria-labelledby={titleId}
-        className={`glass ${styles.panel} ${styles[kind]}`}
+        className={`glass-thick ${styles.panel} ${styles[kind]}`}
       >
         <header className={styles.header}>
           <h2 id={titleId} className={styles.title}>{title}</h2>
