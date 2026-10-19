@@ -13,6 +13,10 @@ export default defineConfig({
   use: {
     baseURL: 'http://localhost:4173',
     trace: 'retain-on-failure',
+    // Halo's reduced-motion styles remove all transitions and animations,
+    // which keeps tests deterministic: in CI, headless WebKit on Linux didn't
+    // finish CSS transitions, so elements never became "stable" to click.
+    reducedMotion: 'reduce',
   },
   webServer: {
     command: 'npm run build && npx vite preview --port 4173 --strictPort',
