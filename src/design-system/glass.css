@@ -33,7 +33,7 @@
 
   /* Chrome (tab bar, sidebar) sits over moving content, so a touch more opaque */
   .glass-chrome {
-    background-color: rgba(var(--surface-rgb), calc(var(--glass-alpha) + 0.12));
+    background-color: rgba(var(--surface-rgb), calc(var(--glass-alpha) + 0.2));
   }
 }
 
