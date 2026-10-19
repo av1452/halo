@@ -47,7 +47,7 @@ export function NowPlayingCard({ compact = false }: { compact?: boolean }) {
 
   if (!track) {
     return (
-      <GlassCard padding="lg" className={`${styles.nowPlaying} ${styles.empty}`}>
+      <GlassCard padding="lg" className={`${styles.nowPlaying} ${styles.empty} ${compact ? styles.compact : ''}`}>
         <span className={styles.emptyArt} aria-hidden="true"><Music2 /></span>
         <div className={styles.emptyText}>
           <h3>Nothing playing in Halo</h3>

@@ -36,3 +36,12 @@ test('the dashboard uses multiple columns on iPad', async ({ page }, info) => {
   const weather = await page.getByRole('region', { name: 'Weather' }).boundingBox()
   expect(Math.abs(clock!.y - weather!.y)).toBeLessThan(4) // side by side
 })
+
+test('dashboard widgets never clip their content', async ({ page }) => {
+  await page.route(/^https?:\/\/(?!localhost)/, (r) => r.abort())
+  await page.goto('/')
+  const button = page.getByRole('button', { name: 'Play files from this device' })
+  const card = page.locator('[class*="nowPlaying"]').first()
+  const [b, c] = [await button.boundingBox(), await card.boundingBox()]
+  expect(b!.x + b!.width).toBeLessThanOrEqual(c!.x + c!.width)
+})
