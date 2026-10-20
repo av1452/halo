@@ -34,6 +34,7 @@ struct RootView: View {
         case .smartHome: SmartHomeView()
         case .apps: AppsView()
         case .media: MediaView()
+        case .search: SearchView()
         default: placeholder(for: section)
         }
     }
