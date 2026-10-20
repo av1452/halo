@@ -81,3 +81,17 @@ final class ArrangeUITests: XCTestCase {
         XCTAssertFalse(app.buttons["Podcasts"].waitForExistence(timeout: 2))
     }
 }
+
+final class AppStoreFallbackUITests: XCTestCase {
+    /// StoreKit can't load product pages in the Simulator, so Halo opens the App Store link instead.
+    @MainActor
+    func testViewInAppStoreFallsBackToTheAppStoreLink() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-haloResetData", "-haloSection", "apps", "-haloDiscover"]
+        app.launch()
+        app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Things 3'")).firstMatch.tap()
+        app.buttons["View in App Store"].tap()
+        let safari = XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
+        XCTAssertTrue(safari.wait(for: .runningForeground, timeout: 15))
+    }
+}
