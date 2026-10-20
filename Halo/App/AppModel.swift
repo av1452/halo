@@ -9,6 +9,7 @@ final class AppModel {
     let opener: AppOpener
     let discover: DiscoverStore
     let appStore = AppStoreClient()
+    let music = MusicController()
 
     init(directory: URL = JSONStore<Settings>.defaultDirectory) {
         settings = SettingsStore(store: JSONStore(name: "settings", directory: directory))

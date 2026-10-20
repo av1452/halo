@@ -31,6 +31,7 @@ struct RootView: View {
         switch section {
         case .smartHome: SmartHomeView()
         case .apps: AppsView()
+        case .media: MediaView()
         default: placeholder(for: section)
         }
     }

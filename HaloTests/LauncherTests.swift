@@ -104,3 +104,11 @@ actor Counter {
     var value = 0
     func increment() { value += 1 }
 }
+
+struct MusicFormatTests {
+    @Test func formatsPlaybackTimes() {
+        #expect(MusicController.format(125) == "2:05")
+        #expect(MusicController.format(0) == "0:00")
+        #expect(MusicController.format(.nan) == "0:00")
+    }
+}

@@ -13,6 +13,8 @@
 		1067A7DD2FECCF740CB36317 /* AppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBECB0AF4721D41CF67C7D5 /* AppSection.swift */; };
 		117AAA2124FF051102D6D05C /* SmartHomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C16619562075425E4A9F3E /* SmartHomeUITests.swift */; };
 		20BA30E34A44C17CD8E6786D /* AppDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D89E514D3361EF7CB51537 /* AppDetailView.swift */; };
+		20D58513E2D7B6A3E33D7C78 /* MusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE8F9D998D477FC9F6DC3E3 /* MusicController.swift */; };
+		2303A5FEEBA4CE37961146EC /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78BDC225DA6B017B70B0F4 /* MediaView.swift */; };
 		25D9088E69AE8E31F8DE504B /* StoreProductPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE6C93E1115CB7F15C2567 /* StoreProductPresenter.swift */; };
 		3F197199D6EF648A9C0380FD /* LauncherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447A0CD2529FA65C1E0CEAD /* LauncherTests.swift */; };
 		45144E9173D1934DC382B4EF /* AppsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCE72D452176B131636CCE /* AppsUITests.swift */; };
@@ -31,6 +33,7 @@
 		78027569377FC542D9A2BDD6 /* SmartHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4884D9A296C116B1357D4AC9 /* SmartHomeView.swift */; };
 		7CA27A1CDF72A60E404FB5CC /* AppIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D1B6C91D3C219CE0A6F3C /* AppIconView.swift */; };
 		7D376A9D7ED264616AE96382 /* ShortcutEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82458833E0493B60AA3AEDA7 /* ShortcutEditor.swift */; };
+		8238B69F9FD589548B1221AF /* NowPlayingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A8B53470CAC8F9A81A048B /* NowPlayingCard.swift */; };
 		82DB6586A4C4E826BA2F9FA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D511CE9A8A5F1865C27E086 /* RootView.swift */; };
 		8A872B2AE5B3EB68BEA2CC72 /* SettingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED3AF3DA3C17910BA6C25A5 /* SettingsUITests.swift */; };
 		944DE3F7DBC7B69AC2F1B56D /* AppSectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779336C5C3E4193FE3363A16 /* AppSectionTests.swift */; };
@@ -39,6 +42,7 @@
 		B3C64E4DCCA26A09E4CCD65D /* HaloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE7F4A343D0644CB868C /* HaloApp.swift */; };
 		B9713C79629FDCA937A249CA /* DiscoverCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06ACC2BA0FDAACD9FB376FB /* DiscoverCatalog.swift */; };
 		C6E8C96657E50AE00B321D08 /* DeviceTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEEDA3FC0519F5372F28097 /* DeviceTile.swift */; };
+		C815013323F2193845CD447A /* MediaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5871C96034070134A1E1A01 /* MediaUITests.swift */; };
 		D0C6DF753EFA47BC33117684 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F224A90F288DF2559B7C971E /* DiscoverView.swift */; };
 		DD6F1317D234686733A63961 /* DeviceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F780B17B3C2B9AEEC12311 /* DeviceDetailView.swift */; };
 		E56BA5F06C645C4A3869C644 /* SectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91151C1368F59D315E549EE2 /* SectionScreen.swift */; };
@@ -75,6 +79,7 @@
 		1CFC22B17493BCE499419EEB /* LauncherStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherStore.swift; sourceTree = "<group>"; };
 		1F49DACEB6F5CAF803C0B05C /* JSONStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStoreTests.swift; sourceTree = "<group>"; };
 		214B8C952E2F9BCCD2D5CC3B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		24A8B53470CAC8F9A81A048B /* NowPlayingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCard.swift; sourceTree = "<group>"; };
 		2534EC25E546686A48F58EA4 /* AppOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOpener.swift; sourceTree = "<group>"; };
 		374D76969C1949B63AA7198B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B7257C72333B17B8121F009 /* HomeKitProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeKitProvider.swift; sourceTree = "<group>"; };
@@ -98,10 +103,12 @@
 		91151C1368F59D315E549EE2 /* SectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionScreen.swift; sourceTree = "<group>"; };
 		95C16619562075425E4A9F3E /* SmartHomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeUITests.swift; sourceTree = "<group>"; };
 		9C25CD10FBE43DDF838230EF /* Halo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Halo.entitlements; sourceTree = "<group>"; };
+		9FE8F9D998D477FC9F6DC3E3 /* MusicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicController.swift; sourceTree = "<group>"; };
 		A6D06FC70875D18AD4ADBA38 /* LaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTests.swift; sourceTree = "<group>"; };
 		AFF61F535CD50A67635A6A27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B06ACC2BA0FDAACD9FB376FB /* DiscoverCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCatalog.swift; sourceTree = "<group>"; };
 		C5DCE72D452176B131636CCE /* AppsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsUITests.swift; sourceTree = "<group>"; };
+		CA78BDC225DA6B017B70B0F4 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
 		D012EBAB8F9097B8365583D8 /* DemoHomeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoHomeProvider.swift; sourceTree = "<group>"; };
 		D7AE6C93E1115CB7F15C2567 /* StoreProductPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreProductPresenter.swift; sourceTree = "<group>"; };
 		DA3E1B8904AC903EF6240A91 /* Halo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Halo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +118,7 @@
 		F18363C63151BCFF45421FA5 /* LaunchOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchOptions.swift; sourceTree = "<group>"; };
 		F224A90F288DF2559B7C971E /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		F31C6D05DA92BF376AA330E3 /* SmartHomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeController.swift; sourceTree = "<group>"; };
+		F5871C96034070134A1E1A01 /* MediaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaUITests.swift; sourceTree = "<group>"; };
 		FBBECB0AF4721D41CF67C7D5 /* AppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +166,7 @@
 			children = (
 				29EDF273A9093CC954CD12B4 /* AppStore */,
 				35DBBDD8DEF6BE2424758B20 /* Launcher */,
+				3D3499EFD092D1CC53F5FF65 /* Media */,
 				7DB224C019D81C0CEE64BABD /* SmartHome */,
 			);
 			path = Services;
@@ -171,6 +180,14 @@
 				578E03F8AF27E9FF3661D468 /* Shortcut.swift */,
 			);
 			path = Launcher;
+			sourceTree = "<group>";
+		};
+		3D3499EFD092D1CC53F5FF65 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				9FE8F9D998D477FC9F6DC3E3 /* MusicController.swift */,
+			);
+			path = Media;
 			sourceTree = "<group>";
 		};
 		40BA1A31423911606568DCFE /* Features */ = {
@@ -266,6 +283,7 @@
 			children = (
 				C5DCE72D452176B131636CCE /* AppsUITests.swift */,
 				A6D06FC70875D18AD4ADBA38 /* LaunchTests.swift */,
+				F5871C96034070134A1E1A01 /* MediaUITests.swift */,
 				5ED3AF3DA3C17910BA6C25A5 /* SettingsUITests.swift */,
 				95C16619562075425E4A9F3E /* SmartHomeUITests.swift */,
 			);
@@ -305,6 +323,8 @@
 		E6F254F1478083CC2871592B /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				CA78BDC225DA6B017B70B0F4 /* MediaView.swift */,
+				24A8B53470CAC8F9A81A048B /* NowPlayingCard.swift */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -463,6 +483,9 @@
 				E97C3375742DBB2149218C57 /* LaunchOptions.swift in Sources */,
 				F056D462C614C892DDA92E38 /* LauncherStore.swift in Sources */,
 				6BC5E32CC3EAFA1AF32032A1 /* LauncherView.swift in Sources */,
+				2303A5FEEBA4CE37961146EC /* MediaView.swift in Sources */,
+				20D58513E2D7B6A3E33D7C78 /* MusicController.swift in Sources */,
+				8238B69F9FD589548B1221AF /* NowPlayingCard.swift in Sources */,
 				82DB6586A4C4E826BA2F9FA1 /* RootView.swift in Sources */,
 				E56BA5F06C645C4A3869C644 /* SectionScreen.swift in Sources */,
 				4DD002120D67F9A64CE2C9BF /* SettingsStore.swift in Sources */,
@@ -495,6 +518,7 @@
 			files = (
 				45144E9173D1934DC382B4EF /* AppsUITests.swift in Sources */,
 				6CD9CA8CE2BC216B155574D8 /* LaunchTests.swift in Sources */,
+				C815013323F2193845CD447A /* MediaUITests.swift in Sources */,
 				8A872B2AE5B3EB68BEA2CC72 /* SettingsUITests.swift in Sources */,
 				117AAA2124FF051102D6D05C /* SmartHomeUITests.swift in Sources */,
 			);
