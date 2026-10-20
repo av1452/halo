@@ -20,6 +20,8 @@
 		2303A5FEEBA4CE37961146EC /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78BDC225DA6B017B70B0F4 /* MediaView.swift */; };
 		25C71BA2FE88D7BB1DCB3140 /* SearchIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4159102830429CCEC09C0E /* SearchIndex.swift */; };
 		25D9088E69AE8E31F8DE504B /* StoreProductPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE6C93E1115CB7F15C2567 /* StoreProductPresenter.swift */; };
+		268406190D54CCF5E06EDB68 /* IconProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127AEB501E085ACF74A1D46B /* IconProviderTests.swift */; };
+		30CBDEE3331B52A88684E886 /* IconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA621467AB364A9CFB9A4D1D /* IconProvider.swift */; };
 		3F197199D6EF648A9C0380FD /* LauncherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447A0CD2529FA65C1E0CEAD /* LauncherTests.swift */; };
 		45144E9173D1934DC382B4EF /* AppsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCE72D452176B131636CCE /* AppsUITests.swift */; };
 		4889435F562EAD33359BD342 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA59E36C85EB88C488896A6 /* SearchView.swift */; };
@@ -52,6 +54,7 @@
 		A6B102DD7B0A5398EB9EC428 /* SearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F183FF33AF88E92BDC0868E /* SearchUITests.swift */; };
 		B3C64E4DCCA26A09E4CCD65D /* HaloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE7F4A343D0644CB868C /* HaloApp.swift */; };
 		B9713C79629FDCA937A249CA /* DiscoverCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06ACC2BA0FDAACD9FB376FB /* DiscoverCatalog.swift */; };
+		BE4B82C6F9D6634BAF2249F1 /* ShortcutIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8FF5E2CA6761D81BD23BEB /* ShortcutIcon.swift */; };
 		C6E8C96657E50AE00B321D08 /* DeviceTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEEDA3FC0519F5372F28097 /* DeviceTile.swift */; };
 		C815013323F2193845CD447A /* MediaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5871C96034070134A1E1A01 /* MediaUITests.swift */; };
 		D0C6DF753EFA47BC33117684 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F224A90F288DF2559B7C971E /* DiscoverView.swift */; };
@@ -91,6 +94,7 @@
 		0C7D7C7D4CBD44F54FE81A98 /* SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTests.swift; sourceTree = "<group>"; };
 		0D5E5AE3FCFE09A9D580D2A4 /* SmartHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeModel.swift; sourceTree = "<group>"; };
 		0F0D67E99F55E751CDD0F518 /* HomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUITests.swift; sourceTree = "<group>"; };
+		127AEB501E085ACF74A1D46B /* IconProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconProviderTests.swift; sourceTree = "<group>"; };
 		1CFC22B17493BCE499419EEB /* LauncherStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherStore.swift; sourceTree = "<group>"; };
 		1F49DACEB6F5CAF803C0B05C /* JSONStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStoreTests.swift; sourceTree = "<group>"; };
 		214B8C952E2F9BCCD2D5CC3B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -120,12 +124,14 @@
 		8328E4C7F352FBA41D290DB7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8447A0CD2529FA65C1E0CEAD /* LauncherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherTests.swift; sourceTree = "<group>"; };
 		88E089094EBEBD25EE06F784 /* SmartHomeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeProvider.swift; sourceTree = "<group>"; };
+		8D8FF5E2CA6761D81BD23BEB /* ShortcutIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutIcon.swift; sourceTree = "<group>"; };
 		91151C1368F59D315E549EE2 /* SectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionScreen.swift; sourceTree = "<group>"; };
 		91E261D499F1141859349C4A /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		95C16619562075425E4A9F3E /* SmartHomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeUITests.swift; sourceTree = "<group>"; };
 		9C25CD10FBE43DDF838230EF /* Halo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Halo.entitlements; sourceTree = "<group>"; };
 		9FE8F9D998D477FC9F6DC3E3 /* MusicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicController.swift; sourceTree = "<group>"; };
 		A6D06FC70875D18AD4ADBA38 /* LaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTests.swift; sourceTree = "<group>"; };
+		AA621467AB364A9CFB9A4D1D /* IconProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconProvider.swift; sourceTree = "<group>"; };
 		AFF61F535CD50A67635A6A27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B06ACC2BA0FDAACD9FB376FB /* DiscoverCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCatalog.swift; sourceTree = "<group>"; };
 		C5DCE72D452176B131636CCE /* AppsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsUITests.swift; sourceTree = "<group>"; };
@@ -182,6 +188,7 @@
 				779336C5C3E4193FE3363A16 /* AppSectionTests.swift */,
 				6B89DE29B7C11F2F45823E33 /* BackupTests.swift */,
 				59FF6BE06000086E8F481FE2 /* HomeTests.swift */,
+				127AEB501E085ACF74A1D46B /* IconProviderTests.swift */,
 				1F49DACEB6F5CAF803C0B05C /* JSONStoreTests.swift */,
 				8447A0CD2529FA65C1E0CEAD /* LauncherTests.swift */,
 				0C7D7C7D4CBD44F54FE81A98 /* SearchTests.swift */,
@@ -216,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				2534EC25E546686A48F58EA4 /* AppOpener.swift */,
+				AA621467AB364A9CFB9A4D1D /* IconProvider.swift */,
 				1CFC22B17493BCE499419EEB /* LauncherStore.swift */,
 				578E03F8AF27E9FF3661D468 /* Shortcut.swift */,
 			);
@@ -357,6 +365,7 @@
 				62444A46BD0BC85A8C86B6ED /* AppsView.swift */,
 				7C1424547A837D6A3BA73245 /* LauncherView.swift */,
 				82458833E0493B60AA3AEDA7 /* ShortcutEditor.swift */,
+				8D8FF5E2CA6761D81BD23BEB /* ShortcutIcon.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -546,6 +555,7 @@
 				B3C64E4DCCA26A09E4CCD65D /* HaloApp.swift in Sources */,
 				9AD739464ADBFD9B7ECE1424 /* HomeKitProvider.swift in Sources */,
 				1D82FEDAC6F4F6595F4D4887 /* HomeView.swift in Sources */,
+				30CBDEE3331B52A88684E886 /* IconProvider.swift in Sources */,
 				F0BAEF88DDC86A054CABECCC /* JSONStore.swift in Sources */,
 				E97C3375742DBB2149218C57 /* LaunchOptions.swift in Sources */,
 				F056D462C614C892DDA92E38 /* LauncherStore.swift in Sources */,
@@ -561,6 +571,7 @@
 				FD3B7B2E46E91FB2796CF1E1 /* SettingsView.swift in Sources */,
 				64C5B00B58602F47C03375E9 /* Shortcut.swift in Sources */,
 				7D376A9D7ED264616AE96382 /* ShortcutEditor.swift in Sources */,
+				BE4B82C6F9D6634BAF2249F1 /* ShortcutIcon.swift in Sources */,
 				05BDAD41F05431FD089AD726 /* SmartHomeController.swift in Sources */,
 				71D5F1E10DB666760F7FD5F8 /* SmartHomeModel.swift in Sources */,
 				50D7C0564FFEA7C4B55F6DFB /* SmartHomeProvider.swift in Sources */,
@@ -579,6 +590,7 @@
 				944DE3F7DBC7B69AC2F1B56D /* AppSectionTests.swift in Sources */,
 				5CE399FE11A264CF6DB2119F /* BackupTests.swift in Sources */,
 				4AF0AC1E38CA0232B56F8E22 /* HomeTests.swift in Sources */,
+				268406190D54CCF5E06EDB68 /* IconProviderTests.swift in Sources */,
 				07F77DA8B1751AB75B8C183E /* JSONStoreTests.swift in Sources */,
 				3F197199D6EF648A9C0380FD /* LauncherTests.swift in Sources */,
 				02656718E7D7098345E2EFB5 /* SearchTests.swift in Sources */,

@@ -27,7 +27,7 @@ struct ShortcutEditor: View {
                 Section {
                     HStack {
                         Spacer()
-                        AppIconView(symbol: draft.symbol, colorHex: draft.colorHex, size: 76)
+                        ShortcutIcon(shortcut: previewShortcut, size: 76)
                         Spacer()
                     }
                     .listRowBackground(Color.clear)
@@ -58,7 +58,7 @@ struct ShortcutEditor: View {
                         }
                     }
                 }
-                Section("Appearance") {
+                Section {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 36))], spacing: 10) {
                         ForEach(Self.colors, id: \.self) { hex in
                             Button { draft.colorHex = hex } label: {
@@ -82,6 +82,10 @@ struct ShortcutEditor: View {
                             .accessibilityAddTraits(draft.symbol == symbol ? .isSelected : [])
                         }
                     }
+                } header: {
+                    Text("Fallback Icon")
+                } footer: {
+                    Text("Halo shows the app’s App Store icon or the website’s own icon when it can find one. This color and symbol are used otherwise.")
                 }
                 Section {
                     Toggle("Favorite", isOn: $draft.isFavorite)
@@ -99,12 +103,23 @@ struct ShortcutEditor: View {
         }
     }
 
+    /// The draft as it would be saved, so the preview shows the real icon for the typed address.
+    private var previewShortcut: Shortcut {
+        var preview = draft
+        if let url = ShortcutURL.normalize(address) {
+            preview.url = url.absoluteString
+            if preview.appStoreID == nil { preview.appStoreID = ShortcutURL.appStoreID(in: url) }
+        }
+        return preview
+    }
+
     private func save() {
         guard let url = ShortcutURL.normalize(address) else {
             showError = true
             return
         }
         draft.url = url.absoluteString
+        if draft.appStoreID == nil { draft.appStoreID = ShortcutURL.appStoreID(in: url) }
         draft.name = draft.name.trimmingCharacters(in: .whitespaces)
         draft.folder = folder.trimmingCharacters(in: .whitespaces).isEmpty ? nil : folder.trimmingCharacters(in: .whitespaces)
         if original == nil { model.launcher.add(draft) } else { model.launcher.update(draft) }

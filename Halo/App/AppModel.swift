@@ -10,6 +10,7 @@ final class AppModel {
     let discover: DiscoverStore
     let appStore = AppStoreClient()
     let music = MusicController()
+    let icons: IconProvider
     let calendar = CalendarController()
     let weather: WeatherController
     let dashboard: DashboardStore
@@ -21,6 +22,7 @@ final class AppModel {
         launcher = LauncherStore(store: JSONStore(name: "launcher", directory: directory))
         opener = AppOpener(launcher: launcher)
         discover = DiscoverStore(store: JSONStore(name: "discover", directory: directory))
+        icons = IconProvider(appStore: appStore)
         weather = WeatherController(store: JSONStore(name: "weather", directory: directory))
         dashboard = DashboardStore(store: JSONStore(name: "dashboard", directory: directory))
         notes = NotesStore(store: JSONStore(name: "notes", directory: directory))

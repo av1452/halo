@@ -345,7 +345,7 @@ struct FavoritesWidget: View {
                     ForEach(favorites.prefix(8)) { shortcut in
                         Button { Task { await model.opener.open(shortcut) } } label: {
                             VStack(spacing: 6) {
-                                AppIconView(symbol: shortcut.symbol, colorHex: shortcut.colorHex, size: 54)
+                                ShortcutIcon(shortcut: shortcut, size: 54)
                                 Text(shortcut.name).font(.caption.weight(.medium)).lineLimit(1)
                             }
                         }

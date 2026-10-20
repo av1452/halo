@@ -96,7 +96,7 @@ private struct ShortcutTile: View {
             Task { await model.opener.open(shortcut) }
         } label: {
             VStack(spacing: 6) {
-                AppIconView(symbol: shortcut.symbol, colorHex: shortcut.colorHex)
+                ShortcutIcon(shortcut: shortcut)
                     .overlay(alignment: .topTrailing) {
                         if !installed {
                             Image(systemName: "icloud.and.arrow.down.fill")
@@ -155,7 +155,7 @@ private struct ArrangeView: View {
                         Label {
                             Text(shortcut.name)
                         } icon: {
-                            AppIconView(symbol: shortcut.symbol, colorHex: shortcut.colorHex, size: 30)
+                            ShortcutIcon(shortcut: shortcut, size: 30)
                         }
                     }
                 }

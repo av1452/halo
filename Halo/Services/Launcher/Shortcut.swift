@@ -42,6 +42,14 @@ enum ShortcutURL {
     }
 
     static func isWeb(_ url: URL) -> Bool { ["http", "https"].contains(url.scheme?.lowercased() ?? "") }
+
+    /// The App Store ID in an apps.apple.com link, e.g. ".../app/things-3/id904237743".
+    static func appStoreID(in url: URL) -> Int? {
+        guard let host = url.host()?.lowercased(), host == "apps.apple.com" || host.hasSuffix(".apps.apple.com"),
+              let match = url.path().range(of: #"id(\d+)"#, options: .regularExpression)
+        else { return nil }
+        return Int(url.path()[match].dropFirst(2))
+    }
 }
 
 enum AppleApps {

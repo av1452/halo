@@ -36,7 +36,7 @@ private struct MediaAppCard: View {
             }
         } label: {
             HStack(spacing: 12) {
-                AppIconView(symbol: app.symbol, colorHex: app.colorHex, size: 44)
+                ShortcutIcon(shortcut: app, size: 44)
                 VStack(alignment: .leading) {
                     Text(app.name).font(.headline)
                     Text(installed ? "Open" : "Get in App Store").font(.caption).foregroundStyle(.secondary)
