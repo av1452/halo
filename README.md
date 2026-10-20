@@ -22,7 +22,7 @@ Apple Music, calendar and reminders, and App Store discovery together in one
 | Section | What it does | Apple framework |
 | --- | --- | --- |
 | **Home** | Greeting and a customizable dashboard: clock, weather, upcoming events, reminders (complete and add them), pinned devices and scenes, favorite apps, Now Playing, quick actions, notes. Show, hide, reorder and resize widgets; wide widgets span both columns on iPad. | EventKit, MapKit, CoreLocation |
-| **Apps** | Starts with 14 of Apple's own apps (Music, Maps, Calendar, Shortcuts…). Shows which are installed, opens them, and offers the App Store page when one isn't installed. Add your own website and app-link shortcuts, favorite them, sort them into folders, search and rearrange. | UIKit `canOpenURL`/`open`, StoreKit |
+| **Apps** | Starts with 14 of Apple's own apps (Music, Maps, Calendar, Shortcuts…) with their real App Store icons. Shows which are installed, opens them, and offers the App Store page when one isn't installed. Add your own website and app-link shortcuts, favorite them, sort them into folders, search and rearrange. | UIKit `canOpenURL`/`open`, StoreKit |
 | **Discover** (in Apps) | 26 hand-picked apps with real icons, screenshots and ratings from Apple, App Store search, favorites and history. "View in App Store" opens the real App Store page inside Halo. | StoreKit, iTunes Search API |
 | **Smart Home** | Your **Apple Home**: rooms, lights with dimming, outlets and switches, thermostats, locks, sensors, cameras and scenes, kept live. Plus a clearly labeled **demo home** for exploring without accessories. | HomeKit |
 | **Media** | What's playing in the **Music app**, with artwork, progress and play/pause/skip. Shortcuts to Music, Podcasts, TV and Books. | MediaPlayer |
@@ -148,13 +148,16 @@ Simulator falls back to opening the App Store link).
 
 No accounts, analytics or tracking. Halo stores its own data on the device.
 It reads Apple Home, Calendar, Reminders and Music data only with your
-permission, and never copies it into backups. Halo contacts two services, and
-only when you use the related feature:
+permission, and never copies it into backups. Halo makes network requests only
+for these features:
 
 | Service | When | What it receives |
 | --- | --- | --- |
-| Apple iTunes Search API | Browsing or searching Discover | App IDs or your search term, and your region |
+| Apple iTunes Search API and Apple's image servers | Showing app icons, browsing or searching Discover | App IDs or your search term, and your region |
+| Websites you add as shortcuts | Once, to fetch the site's own icon | A standard request for its `apple-touch-icon` |
 | Open-Meteo | After you choose a weather location | Coordinates rounded to about 1 km |
+
+Icons are cached on the device after the first download.
 
 ## The web version
 
