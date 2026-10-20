@@ -4,64 +4,40 @@ import SwiftUI
 /// iPhone, which becomes a sidebar on iPad. Settings opens as a sheet from
 /// the gear button in each section's toolbar.
 struct RootView: View {
-    @State private var selection: AppSection = .home
-    @State private var showingSettings = false
+    @State private var selection: AppSection = LaunchOptions.initialSection
+    @State private var showingSettings = LaunchOptions.openSettings
 
     var body: some View {
         TabView(selection: $selection) {
             ForEach(AppSection.tabs) { section in
                 Tab(section.title, systemImage: section.systemImage, value: section) {
-                    SectionPlaceholder(section: section, showingSettings: $showingSettings)
+                    view(for: section)
                 }
             }
             Tab(value: AppSection.search, role: .search) {
-                SectionPlaceholder(section: .search, showingSettings: $showingSettings)
+                view(for: .search)
             }
         }
         .tabViewStyle(.sidebarAdaptable)
         .tabBarMinimizeBehavior(.onScrollDown)
+        .environment(\.openSettings, { showingSettings = true })
         .sheet(isPresented: $showingSettings) {
-            NavigationStack {
-                Text("Settings")
-                    .navigationTitle("Settings")
-            }
+            SettingsView()
         }
     }
-}
 
-/// Toolbar button that opens Settings, shared by every section.
-struct SettingsToolbarButton: ToolbarContent {
-    @Binding var showingSettings: Bool
-
-    var body: some ToolbarContent {
-        ToolbarItem(placement: .topBarTrailing) {
-            Button("Settings", systemImage: "gearshape") { showingSettings = true }
-        }
-    }
-}
-
-/// Temporary content until each section is built.
-private struct SectionPlaceholder: View {
-    let section: AppSection
-    @Binding var showingSettings: Bool
-
-    var body: some View {
-        NavigationStack {
-            ScrollView {
-                GlassCard {
-                    Label("Coming soon", systemImage: section.systemImage)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .padding()
+    @ViewBuilder
+    private func view(for section: AppSection) -> some View {
+        SectionScreen(title: section.title) {
+            GlassCard {
+                Label("Coming soon", systemImage: section.systemImage)
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .background { Wallpaper() }
-            .navigationTitle(section.title)
-            .toolbar { SettingsToolbarButton(showingSettings: $showingSettings) }
         }
     }
 }
 
 #Preview {
-    RootView()
+    RootView().environment(AppModel())
 }
