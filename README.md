@@ -2,238 +2,173 @@
 
 **Your digital world, beautifully unified.**
 
-Halo is a Liquid Glass–inspired home hub for iPhone, iPad and desktop. It runs in
-the browser and installs as a Progressive Web App (PWA), bringing your app
-shortcuts, smart-home controls, media, widgets and search into one place.
+Halo is a native iPhone and iPad app that brings your Apple Home, Apple apps,
+Apple Music, calendar and reminders, and App Store discovery together in one
+**Liquid Glass** interface, built with SwiftUI for iOS 26.
 
 <p>
-  <img src="docs/screenshots/iphone-smart-home.png" alt="Halo's Smart Home section in Safari on iPhone" width="260" />
-  <img src="docs/screenshots/ipad-home.png" alt="Halo's Home dashboard in Safari on iPad" width="400" />
+  <img src="docs/screenshots/iphone-smart-home.png" alt="Smart Home on iPhone, showing the demo home, scenes and room filters in Liquid Glass" width="250" />
+  <img src="docs/screenshots/iphone-discover.png" alt="Discover on iPhone in dark mode, with featured apps and real App Store icons" width="250" />
 </p>
-<img src="docs/screenshots/desktop-dark-home.png" alt="Halo's Home dashboard in dark mode on desktop" width="680" />
+<img src="docs/screenshots/ipad-home.png" alt="The Home dashboard on iPad with a two-column widget layout" width="560" />
 
-<sub>iPhone and iPad screenshots are from Mobile Safari in the iOS 26.1 Simulator.</sub>
+<sub>Screenshots from the iOS 26.1 Simulator. The Smart Home section is showing the built-in demo home.</sub>
 
-> Halo is an independent personal project. It isn't an Apple product, isn't
-> affiliated with or endorsed by Apple, doesn't replace the iOS Home Screen and
-> uses no private iOS APIs. "Halo" is a provisional name pending availability
-> and trademark checks.
+> Halo is an independent project. It isn't affiliated with or endorsed by
+> Apple, and it can't replace the iOS Home Screen. "Halo" is a provisional name.
 
 ## Features
 
-| Section | What it does |
-| --- | --- |
-| **Home** | Greeting, date and a customizable widget dashboard: clock, live weather, favorite apps, smart-home scenes and pinned devices, Now Playing, reminders, month calendar, notes, quick actions and optional Hacker News. Edit mode adds, removes, reorders and resizes widgets. |
-| **Apps** | A home-screen-style launcher for websites, Universal Links, `mailto:`/`tel:` links and app URL schemes, with folders, favorites, search, filters, recents, edit/reorder mode and website/App Store fallbacks. |
-| **Smart Home** | A fully interactive, clearly labelled **demo home**: rooms, dimmable lights, plugs, a thermostat with a running simulation, a lock, sensors, a camera and five scenes. |
-| **Media** | Curated music, video and podcast destinations, plus a real player for audio files on your device with lock-screen controls via the Media Session API. |
-| **Discover** | 26 hand-picked apps with official App Store links, live details (icons, screenshots, ratings) from Apple's public Search API, App Store search and "Add to Apps". |
-| **Search** | ⌘K, `/` or the search button on any page searches shortcuts, devices, rooms, scenes, media, widgets, Discover and settings. |
-| **Settings** | Light/dark/automatic theme, accent color, gradient or photo wallpaper, glass intensity, accessibility options, units, backup export/import, reset, install help and a privacy summary. |
+| Section | What it does | Apple framework |
+| --- | --- | --- |
+| **Home** | Greeting and a customizable dashboard: clock, weather, upcoming events, reminders (complete and add them), pinned devices and scenes, favorite apps, Now Playing, quick actions, notes. Show, hide, reorder and resize widgets; wide widgets span both columns on iPad. | EventKit, MapKit, CoreLocation |
+| **Apps** | Starts with 14 of Apple's own apps (Music, Maps, Calendar, Shortcuts…). Shows which are installed, opens them, and offers the App Store page when one isn't installed. Add your own website and app-link shortcuts, favorite them, sort them into folders, search and rearrange. | UIKit `canOpenURL`/`open`, StoreKit |
+| **Discover** (in Apps) | 26 hand-picked apps with real icons, screenshots and ratings from Apple, App Store search, favorites and history. "View in App Store" opens the real App Store page inside Halo. | StoreKit, iTunes Search API |
+| **Smart Home** | Your **Apple Home**: rooms, lights with dimming, outlets and switches, thermostats, locks, sensors, cameras and scenes, kept live. Plus a clearly labeled **demo home** for exploring without accessories. | HomeKit |
+| **Media** | What's playing in the **Music app**, with artwork, progress and play/pause/skip. Shortcuts to Music, Podcasts, TV and Books. | MediaPlayer |
+| **Search** | The floating Liquid Glass search button finds apps, devices, rooms, scenes, Discover picks, widgets and settings, and acts on them in place. | SwiftUI search tab |
+| **Settings** | Theme, accent, wallpaper, units, Smart Home source, backup export/import, reset, and a privacy summary with live permission status. | SwiftUI file export/import |
 
-It also works offline after the first visit, updates only when you choose to, and
-meets WCAG 2.1 AA contrast in light and dark mode (checked automatically with axe).
+The interface uses the system **Liquid Glass** throughout: the tab bar (a
+sidebar on iPad), the detached search button, toolbars, buttons, chips and
+cards, over mesh-gradient wallpapers.
 
-### What Halo deliberately doesn't do
+### Honest limits
 
-A web app can't list installed iOS apps, confirm that a native app opened, use
-HomeKit, WidgetKit, Siri or App Intents, read playback from other apps, run in the
-background or draw over other apps. Halo never pretends otherwise:
+- Halo only sees the **Music app's** playback, not other apps'.
+- It can't list every installed app; it checks the Apple apps it knows about.
+- It doesn't install apps; installs happen in the App Store.
+- Smart Home needs Apple Home to be set up in Apple's Home app (or use the demo).
 
-- App URL schemes may fail silently, so Halo watches whether the page lost focus
-  and, if it can't confirm the app opened, says so and offers the website or
-  App Store link.
-- Smart-home devices are simulated and labelled **Demo** everywhere.
-- Now Playing reports only Halo's own player.
-- Weather appears only after you choose a location. There is no placeholder forecast.
+## Requirements
 
-## Getting started
+- A Mac with **Xcode 26** or later (iOS 26 SDK)
+- An iPhone or iPad on **iOS/iPadOS 26**, or the Simulator
+- An Apple ID. A free one works for running on your own devices (see below).
 
-Requires **Node.js 22.12 or later** and npm.
+## Run it
 
-```sh
-npm install
-npm run dev          # dev server at http://localhost:5173
-npm run check        # typecheck, lint, unit tests and production build
-npm run preview      # serve the production build at http://localhost:4173
-```
-
-| Script | Purpose |
-| --- | --- |
-| `dev` | Vite dev server with hot reload (the service worker is disabled in dev) |
-| `build` | Type-check and build to `dist/` |
-| `typecheck` | `tsc -b` across app, tooling and e2e configs |
-| `lint` | oxlint (including React hooks and React Compiler rules) |
-| `test` / `test:watch` | Vitest unit and component tests |
-| `test:e2e` | Playwright against the production build (see below) |
-| `check` | Everything CI's first job runs, in order |
-| `icons` | Regenerate PNG icons from the SVGs in `public/icons/` |
-
-### Testing
-
-- **Unit and component tests** (Vitest, Testing Library, jsdom): stores and
-  validation, URL safety, backup import/export, smart-home logic, weather and App
-  Store parsing, search ranking, the audio player, and user flows for every
-  section.
-- **End-to-end tests** (Playwright) run against `vite preview` in **iPhone
-  WebKit**, **iPad WebKit** and **desktop Chromium**: navigation and deep links,
-  responsive layout, persistence across reloads, offline use, the manifest,
-  axe-core accessibility scans of every page in light and dark mode, focus
-  management, and older-browser fallbacks.
+### In the Simulator
 
 ```sh
-npx playwright install chromium webkit   # first time only
-npm run test:e2e
+open Halo.xcodeproj
 ```
 
-## Architecture
+Choose an iPhone or iPad simulator and press **Run** (⌘R). No signing setup is
+needed for the Simulator.
+
+### On your iPhone or iPad with a free Apple ID
+
+1. In Xcode, select the **Halo** target → **Signing & Capabilities**.
+2. Under **Team**, choose your **Personal Team** (add your Apple ID in Xcode →
+   Settings → Accounts if it isn't listed).
+3. Change the **Bundle Identifier** to something unique, e.g.
+   `com.yourname.halo`.
+4. Connect your device, turn on **Developer Mode** (Settings → Privacy &
+   Security) when iOS asks, choose the device in Xcode and press **Run**.
+5. The first time, trust your developer certificate in Settings → General →
+   VPN & Device Management.
+
+Free provisioning has limits: **apps stop launching after 7 days** (run from
+Xcode again to reinstall), only a few apps can be installed this way per
+device, and some capabilities aren't available to personal teams. If Xcode
+says your team can't use a capability (for example HomeKit), remove it in
+Signing & Capabilities. Halo then uses the demo home.
+
+### What the paid Apple Developer Program would add
+
+Publishing on the App Store or TestFlight, installs that don't expire,
+**WeatherKit** (Apple weather to replace Open-Meteo), and capabilities free
+teams can't use, such as App Groups for Home Screen widgets.
+
+### Testing HomeKit without accessories
+
+Apple's **HomeKit Accessory Simulator** (in *Additional Tools for Xcode*,
+downloadable from developer.apple.com with your Apple ID) creates virtual
+accessories that appear in the Simulator's Home data.
+
+## Project structure
 
 ```
-src/
-  app/            Shell, routes, navigation, theme controller
-  components/     Reusable UI: GlassCard, Button, Sheet, Toggle, Slider, fields…
-  design-system/  Tokens, glass surfaces, base styles, theme logic and store
-  features/       One folder per section: home, apps, smart-home, media,
-                  discover, search, settings
-  integrations/   smart-home: the SmartHomeProvider contract and demo provider
-  services/       Weather, App Store, news, audio player, app hand-off detection
-  storage/        Versioned persisted stores, backups, IndexedDB wrapper
-  pwa/            Service-worker template, registration, install state
-  hooks/, utils/  Shared hooks, guards, URL and formatting helpers
-tests/
-  unit/           App-level component tests
-  e2e/            Playwright specs
-scripts/          Icon generation and the service-worker build plugin
+Halo/
+  App/            App entry, AppModel (owns all stores), tab shell, launch options
+  DesignSystem/   Wallpapers (MeshGradient), GlassCard, SectionScreen
+  Features/       Home, Apps, Discover, SmartHome, Media, Search, Settings
+  Services/       HomeKit + demo providers, launcher, app opener, App Store,
+                  Music, Calendar/Reminders, Weather, dashboard
+  Storage/        Versioned JSON stores, backup format
+HaloTests/        Unit tests (Swift Testing)
+HaloUITests/      UI tests (XCTest)
+Design/           Icon artwork (SVG sources)
+project.yml       XcodeGen spec for Halo.xcodeproj
 ```
 
-- **State** lives in small persisted stores (`storage/persistedStore.ts`) built
-  on `useSyncExternalStore`. Each store has a key, a schema version, a validator
-  and an optional migration, and syncs across tabs. Corrupt or newer-version data
-  falls back to defaults instead of crashing. `storage/allStores.ts` registers
-  every store so backup, import and reset cover all data.
-- **Integrations** sit behind interfaces with injected dependencies (e.g.
-  `SmartHomeProvider`, and a `fetch` parameter on every service), so they can be
-  tested without a network and replaced later.
-- **Styling** is plain CSS: design tokens and global glass classes in
-  `design-system/`, and a CSS Module per component. Theme, accent, glass
-  intensity and accessibility options are attributes and custom properties on
-  `<html>`, set before first paint.
-- **Routing** uses React Router with the Vite base path as basename. Filters and
-  open items (`?q=`, `?filter=`, `?room=`, `?device=`, `?app=`, `#section`) live
-  in the URL so Back/Forward and links work.
+- **State** lives in small `@Observable` stores saved as versioned JSON in
+  Application Support. Corrupt or newer-format files fall back to defaults.
+- **Smart Home** goes through a `SmartHomeProvider` protocol; `HomeKitProvider`
+  and `DemoHomeProvider` implement it. HomeKit-to-Halo mapping is a pure,
+  unit-tested function.
+- **Concurrency:** Swift 6 strict concurrency. Callbacks from EventKit and
+  MediaPlayer, which arrive on background queues, are `@Sendable` and convert
+  to value types immediately.
+- The Xcode project is generated from `project.yml`. After changing targets or
+  settings, run `xcodegen generate` (install with `brew install xcodegen`) and
+  commit both files; CI checks they match.
 
-## Deployment (GitHub Pages, free)
+## Tests
 
-The repository includes two workflows:
+```sh
+xcodebuild test -project Halo.xcodeproj -scheme Halo \
+  -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
+```
 
-- `.github/workflows/ci.yml` runs `npm run check` and the Playwright suite on
-  pushes and pull requests.
-- `.github/workflows/deploy.yml` builds and deploys `dist/` to GitHub Pages on
-  every push to `main`.
+- **Unit tests** cover storage, URL validation, the launcher, App Store
+  parsing and error handling, HomeKit mapping, the demo home, search ranking,
+  dashboard layout, weather parsing, reminder sorting and backups.
+- **UI tests** drive real flows in the Simulator, including the actual system
+  permission prompts: granting HomeKit, Apple Music and Reminders access,
+  creating and completing a real reminder, opening Apple Maps from the
+  launcher, the App Store offer for an app that isn't installed, Discover, the
+  demo home, search, Customize Home and Settings.
 
-To deploy:
+GitHub Actions runs both on every push and pull request (`.github/workflows/ios.yml`).
 
-1. Push the repository to GitHub.
-2. In **Settings → Pages**, set **Source** to **GitHub Actions**.
-3. Push to `main`, or run the workflow manually. The site is published at
-   `https://<user>.github.io/<repo>/`.
+### Verified vs. not yet verified
 
-The base path is derived from the repository name, so the repo doesn't need to
-be called `halo`. A `<user>.github.io` repository deploys to `/`. For a custom
-domain or other path, set a repository variable `HALO_BASE` (for example `/`).
-To build for a path locally: `HALO_BASE=/my-repo/ npm run build`.
+Verified in the iOS 26.1 Simulator on iPhone 17 Pro and iPad Pro 11-inch:
+everything listed under UI tests, plus Liquid Glass rendering in light and
+dark mode.
 
-GitHub Pages has no SPA rewrites, so the build also writes `404.html` (a copy of
-the app shell). Deep links such as `/<repo>/smart-home` therefore load Halo,
-although the first response has HTTP status 404. Pages serves HTTPS, which the
-service worker requires.
-
-Any static host with HTTPS works the same way: serve `dist/` and fall back to
-`index.html` for unknown paths.
-
-## Installing on iPhone and iPad
-
-1. Open Halo in Safari.
-2. Tap **Share** (on iOS 26 it may be under the **•••** menu).
-3. Choose **Add to Home Screen**, then **Add**.
-
-Halo then opens in its own standalone window. Installing doesn't grant extra
-permissions. Settings → Install Halo shows these steps, plus an install button
-in browsers that support one.
-
-## Updates and offline use
-
-The service worker precaches the app shell and build assets (never API
-responses). When a new version is deployed, Halo shows **"A new version of Halo
-is ready"** with a **Reload** button. It never reloads on its own, and installed
-apps check for updates whenever they're reopened. Old caches are deleted
-automatically.
-
-## Compatibility
-
-Halo targets **Safari 14+ (iOS/iPadOS 14+)** and current Chrome, Edge and
-Firefox. It is tested in Mobile Safari on iOS 26.1 (Simulator), Playwright
-WebKit and Chromium. Older browsers get a clear notice instead of a blank page.
-See **[docs/COMPATIBILITY.md](docs/COMPATIBILITY.md)** for the full matrix,
-including what was actually tested.
+**Not yet verified on a physical device:** controlling real HomeKit
+accessories (the Simulator has no home set up), live Apple Music playback (the
+Simulator has no Music app), and StoreKit's in-app App Store sheet (the
+Simulator falls back to opening the App Store link).
 
 ## Privacy
 
-- No accounts, analytics, tracking or backend. Halo never asks for or stores
-  passwords.
-- Everything (settings, shortcuts, layout, reminders, notes, demo state) stays
-  in your browser's storage on this device. Export a backup from Settings to
-  move it.
-- Halo contacts only these services, and only when you use the related feature:
+No accounts, analytics or tracking. Halo stores its own data on the device.
+It reads Apple Home, Calendar, Reminders and Music data only with your
+permission, and never copies it into backups. Halo contacts two services, and
+only when you use the related feature:
 
 | Service | When | What it receives |
 | --- | --- | --- |
-| Open-Meteo (weather and geocoding) | After you set a weather location | A city search term, or coordinates rounded to ~100 m |
-| Apple iTunes Search API | Opening a Discover listing or searching the App Store | An app ID or search term, and your region |
-| Apple image CDN | Discover shows icons or screenshots | Standard image requests, no referrer |
-| Hacker News API | Only if you add the Hacker News widget | Nothing personal |
+| Apple iTunes Search API | Browsing or searching Discover | App IDs or your search term, and your region |
+| Open-Meteo | After you choose a weather location | Coordinates rounded to about 1 km |
 
-Details and setup notes for optional integrations are in
-**[docs/INTEGRATIONS.md](docs/INTEGRATIONS.md)**.
+## The web version
 
-## Known limitations
-
-- Smart Home is a demo; no real integration ships yet (see the bridge design in
-  `docs/INTEGRATIONS.md`).
-- The calendar shows Halo's reminders only; connecting iCloud or Google
-  calendars would need OAuth and a backend.
-- App URL schemes can't be verified in advance; Halo can only report when it
-  can't confirm an app opened.
-- Custom photo wallpapers aren't included in backups.
-- Installed-app behaviour (standalone window, Add to Home Screen) follows each
-  browser; it wasn't automated on a physical device.
-- Support for iOS 10–13 is limited to an "update your browser" notice; see the
-  compatibility doc for why.
+Halo started as a Progressive Web App. That version is preserved at the
+[`web-v0.1.0`](https://github.com/av1452/halo/tree/web-v0.1.0) tag.
 
 ## Roadmap
 
-- [x] Design system, Liquid Glass surfaces with fallbacks, light/dark themes
-- [x] App shell with phone, tablet and desktop layouts
-- [x] Versioned storage, backup export/import, reset
-- [x] Apps launcher with folders, favorites and safe app-link hand-off
-- [x] Home dashboard with live weather and customizable widgets
-- [x] Smart Home demo behind a provider interface
-- [x] Media destinations and a local Now Playing player
-- [x] Discover with curated picks and App Store links
-- [x] Unified search
-- [x] Settings and personalization
-- [x] PWA: manifest, icons, offline support, update prompt
-- [x] Unit, e2e and accessibility tests; CI and Pages deployment
-- [ ] Self-hosted smart-home bridge (Home Assistant) behind `SmartHomeProvider`
-- [ ] Calendar import from `.ics` files
-- [ ] Drag-to-reorder on touch, in addition to the move buttons
-- [ ] Testing on physical iPhone/iPad hardware and older iOS simulator runtimes
-- [ ] Optional native companion app for HomeKit and widgets (needs the Apple Developer Program)
+- [ ] Verify HomeKit control, Apple Music and StoreKit on a physical device
+- [ ] WeatherKit, once in the Apple Developer Program
+- [ ] Home Screen widgets and Control Center controls (WidgetKit), which need App Groups
+- [ ] Siri and Shortcuts actions (App Intents)
+- [ ] Apple Watch companion
 
 ## License
 
-Halo is released under the [MIT License](LICENSE).
-
-The license covers Halo's code and original artwork (including the Halo icon). Third-party
-names listed in the app, such as services and App Store apps, belong to their
-respective owners and are referenced only to link to them.
+[MIT](LICENSE)
