@@ -52,7 +52,8 @@ final class AppsUITests: XCTestCase {
         let maps = app.buttons["Maps"]
         XCTAssertTrue(maps.waitForExistence(timeout: 5))
         maps.tap()
-        XCTAssertTrue(XCUIApplication(bundleIdentifier: "com.apple.Maps").wait(for: .runningForeground, timeout: 10))
+        // A cold first launch of Maps on a fresh CI Simulator can take well over 10 s
+        XCTAssertTrue(XCUIApplication(bundleIdentifier: "com.apple.Maps").wait(for: .runningForeground, timeout: 45))
     }
 
     @MainActor
