@@ -43,7 +43,7 @@ targets:
     info:
       path: Halo/Info.plist
       properties:
-        # Schemes Halo may check with canOpenURL before offering to open an Apple app
+        # Schemes Halo may check with canOpenURL: Apple apps, then KnownApps
         LSApplicationQueriesSchemes:
           - music
           - shortcuts
@@ -60,6 +60,42 @@ targets:
           - x-apple-health
           - facetime
           - itms-apps
+          # Popular apps Halo detects (KnownApps.swift). iOS allows at most 50 schemes in total.
+          - instagram
+          - fb
+          - fb-messenger
+          - whatsapp
+          - twitter
+          - barcelona
+          - snapchat
+          - tg
+          - sgnl
+          - discord
+          - reddit
+          - pinterest
+          - linkedin
+          - spotify
+          - youtube
+          - nflx
+          - disneyplus
+          - hulu
+          - twitch
+          - googlegmail
+          - ms-outlook
+          - slack
+          - msteams
+          - zoomus
+          - googledrive
+          - googlechrome
+          - firefox
+          - google
+          - comgooglemaps
+          - waze
+          - uber
+          - lyft
+          - venmo
+          - paypal
+          - strava
     scheme:
       testTargets:
         - HaloTests

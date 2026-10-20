@@ -27,6 +27,13 @@ struct SettingsView: View {
                     WallpaperPicker(selection: $settings.value.wallpaper)
                 }
 
+                Section {
+                    Toggle("Add Installed Apps", isOn: $settings.value.detectInstalledApps)
+                } header: {
+                    Text("Apps")
+                } footer: {
+                    Text("Halo adds popular apps it finds on this device, like Spotify or WhatsApp, with their real icons, and removes them when you delete them. iOS doesn’t let apps see everything installed, so Halo can only check for \(KnownApps.all.count) well-known apps. Add others from Discover.")
+                }
                 SmartHomeSettings()
                 DataSettings()
                 PrivacySettings()

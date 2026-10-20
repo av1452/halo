@@ -54,6 +54,12 @@ struct LauncherView: View {
                 Button("Add Shortcut", systemImage: "plus") { adding = true }
                 Button("Arrange", systemImage: "arrow.up.arrow.down") { arranging = true }
                 Button("Restore Apple Apps", systemImage: "apple.logo") { launcher.restoreAppleApps() }
+                if !launcher.hiddenDetectedApps.isEmpty {
+                    Button("Show Hidden Apps (\(launcher.hiddenDetectedApps.count))", systemImage: "eye") {
+                        launcher.showHiddenDetectedApps()
+                        model.syncInstalledApps()
+                    }
+                }
             }
             .labelStyle(.iconOnly)
             .buttonStyle(.glass)

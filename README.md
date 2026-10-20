@@ -22,7 +22,7 @@ Apple Music, calendar and reminders, and App Store discovery together in one
 | Section | What it does | Apple framework |
 | --- | --- | --- |
 | **Home** | Greeting and a customizable dashboard: clock, weather, upcoming events, reminders (complete and add them), pinned devices and scenes, favorite apps, Now Playing, quick actions, notes. Show, hide, reorder and resize widgets; wide widgets span both columns on iPad. | EventKit, MapKit, CoreLocation |
-| **Apps** | Starts with 14 of Apple's own apps (Music, Maps, Calendar, Shortcuts…) with their real App Store icons. Shows which are installed, opens them, and offers the App Store page when one isn't installed. Add your own website and app-link shortcuts, favorite them, sort them into folders, search and rearrange. | UIKit `canOpenURL`/`open`, StoreKit |
+| **Apps** | Starts with 14 of Apple's own apps (Music, Maps, Calendar, Shortcuts…) and **automatically mirrors popular apps installed on your device** (Spotify, WhatsApp, Instagram, YouTube and 31 more), all with their real App Store icons. Detected apps disappear when you delete them. Opens apps, and offers the App Store page when one isn't installed. Add your own website and app-link shortcuts, favorite them, sort them into folders, search and rearrange. | UIKit `canOpenURL`/`open`, StoreKit |
 | **Discover** (in Apps) | 26 hand-picked apps with real icons, screenshots and ratings from Apple, App Store search, favorites and history. "View in App Store" opens the real App Store page inside Halo. | StoreKit, iTunes Search API |
 | **Smart Home** | Your **Apple Home**: rooms, lights with dimming, outlets and switches, thermostats, locks, sensors, cameras and scenes, kept live. Plus a clearly labeled **demo home** for exploring without accessories. | HomeKit |
 | **Media** | What's playing in the **Music app**, with artwork, progress and play/pause/skip. Shortcuts to Music, Podcasts, TV and Books. | MediaPlayer |
@@ -36,7 +36,9 @@ cards, over mesh-gradient wallpapers.
 ### Honest limits
 
 - Halo only sees the **Music app's** playback, not other apps'.
-- It can't list every installed app; it checks the Apple apps it knows about.
+- iOS doesn't let any app list everything installed or read other apps' icons.
+  Halo checks for Apple's apps plus 35 popular ones (iOS caps these checks at 50
+  URL schemes) and uses each app's App Store icon. Add other apps from Discover.
 - It doesn't install apps; installs happen in the App Store.
 - Smart Home needs Apple Home to be set up in Apple's Home app (or use the demo).
 

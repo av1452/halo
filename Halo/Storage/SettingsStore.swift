@@ -45,6 +45,8 @@ struct Settings: Codable, Equatable {
     var temperatureUnit = TemperatureUnit.celsius
     /// Show the simulated demo home instead of (or when there is no) Apple Home
     var smartHomeDemo = false
+    /// Add popular apps found on the device to Apps automatically
+    var detectInstalledApps = true
 
     // Tolerate missing keys so older files still load
     init() {}
@@ -57,6 +59,7 @@ struct Settings: Codable, Equatable {
         wallpaper = (try? c.decode(WallpaperStyle.self, forKey: .wallpaper)) ?? d.wallpaper
         temperatureUnit = (try? c.decode(TemperatureUnit.self, forKey: .temperatureUnit)) ?? d.temperatureUnit
         smartHomeDemo = (try? c.decode(Bool.self, forKey: .smartHomeDemo)) ?? d.smartHomeDemo
+        detectInstalledApps = (try? c.decode(Bool.self, forKey: .detectInstalledApps)) ?? d.detectInstalledApps
     }
 }
 

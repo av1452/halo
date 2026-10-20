@@ -14,6 +14,10 @@ struct Shortcut: Identifiable, Codable, Equatable, Hashable {
     var appStoreID: Int?
     /// True for Apple's built-in apps that ship in the default list
     var isAppleApp = false
+    /// Set when the shortcut is one of KnownApps (optional so older data still decodes)
+    var knownAppID: String?
+    /// True when Halo added it after detecting the app on the device
+    var autoAdded: Bool?
 }
 
 enum ShortcutURL {

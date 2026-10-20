@@ -29,6 +29,17 @@ final class AppModel {
         if LaunchOptions.demoHome { settings.value.smartHomeDemo = true }
     }
 
+    // MARK: - Installed apps
+
+    /// Adds popular apps found on this device to Apps and removes ones that were uninstalled.
+    @discardableResult
+    func syncInstalledApps() -> LauncherStore.SyncResult {
+        guard settings.value.detectInstalledApps else { return .init() }
+        return launcher.syncInstalled { app in
+            URL(string: app.url).map { UIApplication.shared.canOpenURL($0) } ?? false
+        }
+    }
+
     // MARK: - Backup
 
     func makeBackup() -> HaloBackup {
