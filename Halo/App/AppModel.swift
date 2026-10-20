@@ -26,4 +26,42 @@ final class AppModel {
         notes = NotesStore(store: JSONStore(name: "notes", directory: directory))
         if LaunchOptions.demoHome { settings.value.smartHomeDemo = true }
     }
+
+    // MARK: - Backup
+
+    func makeBackup() -> HaloBackup {
+        var backup = HaloBackup()
+        backup.settings = settings.value
+        backup.launcher = launcher.state
+        backup.dashboard = dashboard.items
+        backup.discover = discover.state
+        backup.notes = notes.text
+        backup.pinnedDevices = smartHome.pinned
+        backup.weatherPlace = weather.place
+        return backup
+    }
+
+    /// Applies each section present in the backup and returns their names.
+    @discardableResult
+    func apply(_ backup: HaloBackup) async -> [String] {
+        if let value = backup.settings { settings.value = value }
+        if let value = backup.launcher { launcher.replace(with: value) }
+        if let value = backup.dashboard { dashboard.replace(with: value) }
+        if let value = backup.discover { discover.replace(with: value) }
+        if let value = backup.notes { notes.text = value }
+        if let value = backup.pinnedDevices { smartHome.replacePins(value) }
+        if let value = backup.weatherPlace { await weather.setPlace(value) }
+        return backup.sections
+    }
+
+    /// Erases Halo's data on this device. Apple Home, Calendar and Reminders data are untouched.
+    func resetAll() {
+        settings.reset()
+        launcher.reset()
+        dashboard.reset()
+        discover.reset()
+        notes.reset()
+        smartHome.reset()
+        weather.reset()
+    }
 }

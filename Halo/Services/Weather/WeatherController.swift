@@ -83,6 +83,12 @@ final class WeatherController: NSObject {
         }
     }
 
+    func reset() {
+        store.remove()
+        saved = Saved()
+        error = nil
+    }
+
     func setPlace(_ place: WeatherPlace?) async {
         saved = Saved(place: place, report: nil)
         await refresh()

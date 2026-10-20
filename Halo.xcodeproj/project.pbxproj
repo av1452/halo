@@ -24,6 +24,7 @@
 		45144E9173D1934DC382B4EF /* AppsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCE72D452176B131636CCE /* AppsUITests.swift */; };
 		4889435F562EAD33359BD342 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA59E36C85EB88C488896A6 /* SearchView.swift */; };
 		4AF0AC1E38CA0232B56F8E22 /* HomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FF6BE06000086E8F481FE2 /* HomeTests.swift */; };
+		4C4006C2F1ABA2F238BE8FC3 /* Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B8BFE07F79FD8FC3A6F37B /* Backup.swift */; };
 		4D251C4F57E2FF83289ECC04 /* AppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62444A46BD0BC85A8C86B6ED /* AppsView.swift */; };
 		4DD002120D67F9A64CE2C9BF /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C64FBE334DA730C946263 /* SettingsStore.swift */; };
 		501213C6DBC01020FB74D4B0 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A171C5E06043D0DDFA3E5C2 /* AppModel.swift */; };
@@ -32,6 +33,7 @@
 		52670ACE93CA401063775772 /* DemoHomeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D012EBAB8F9097B8365583D8 /* DemoHomeProvider.swift */; };
 		55A65086321B4DA9FF98634E /* SmartHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC557F3FEC6D0CFE4D3A6273 /* SmartHomeTests.swift */; };
 		58FD63D074100E2EA8339081 /* Wallpaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA8E2568EF1DBE20CA36BEF /* Wallpaper.swift */; };
+		5CE399FE11A264CF6DB2119F /* BackupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B89DE29B7C11F2F45823E33 /* BackupTests.swift */; };
 		62136775E24D1134FBF5521C /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E261D499F1141859349C4A /* CalendarController.swift */; };
 		64C5B00B58602F47C03375E9 /* Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E03F8AF27E9FF3661D468 /* Shortcut.swift */; };
 		6BC5E32CC3EAFA1AF32032A1 /* LauncherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1424547A837D6A3BA73245 /* LauncherView.swift */; };
@@ -108,6 +110,7 @@
 		62444A46BD0BC85A8C86B6ED /* AppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsView.swift; sourceTree = "<group>"; };
 		63D89E514D3361EF7CB51537 /* AppDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailView.swift; sourceTree = "<group>"; };
 		656D1B6C91D3C219CE0A6F3C /* AppIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconView.swift; sourceTree = "<group>"; };
+		6B89DE29B7C11F2F45823E33 /* BackupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupTests.swift; sourceTree = "<group>"; };
 		6BA8E2568EF1DBE20CA36BEF /* Wallpaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallpaper.swift; sourceTree = "<group>"; };
 		70D263B754F7D312BECEB726 /* AppStoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreClient.swift; sourceTree = "<group>"; };
 		779336C5C3E4193FE3363A16 /* AppSectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSectionTests.swift; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 		DCA59E36C85EB88C488896A6 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		DFEEDA3FC0519F5372F28097 /* DeviceTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTile.swift; sourceTree = "<group>"; };
 		E4F780B17B3C2B9AEEC12311 /* DeviceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailView.swift; sourceTree = "<group>"; };
+		E9B8BFE07F79FD8FC3A6F37B /* Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backup.swift; sourceTree = "<group>"; };
 		F18363C63151BCFF45421FA5 /* LaunchOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchOptions.swift; sourceTree = "<group>"; };
 		F224A90F288DF2559B7C971E /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		F31C6D05DA92BF376AA330E3 /* SmartHomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeController.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				779336C5C3E4193FE3363A16 /* AppSectionTests.swift */,
+				6B89DE29B7C11F2F45823E33 /* BackupTests.swift */,
 				59FF6BE06000086E8F481FE2 /* HomeTests.swift */,
 				1F49DACEB6F5CAF803C0B05C /* JSONStoreTests.swift */,
 				8447A0CD2529FA65C1E0CEAD /* LauncherTests.swift */,
@@ -359,6 +364,7 @@
 		AE46879FE11CC3CD1EFCDB63 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				E9B8BFE07F79FD8FC3A6F37B /* Backup.swift */,
 				0C299E0AB54E78F4AA53B2DE /* JSONStore.swift */,
 				031C64FBE334DA730C946263 /* SettingsStore.swift */,
 			);
@@ -528,6 +534,7 @@
 				1067A7DD2FECCF740CB36317 /* AppSection.swift in Sources */,
 				A648D3320637E4CAA74E81CC /* AppStoreClient.swift in Sources */,
 				4D251C4F57E2FF83289ECC04 /* AppsView.swift in Sources */,
+				4C4006C2F1ABA2F238BE8FC3 /* Backup.swift in Sources */,
 				62136775E24D1134FBF5521C /* CalendarController.swift in Sources */,
 				04409C6CAF72F2E836CE4F3D /* DashboardStore.swift in Sources */,
 				52670ACE93CA401063775772 /* DemoHomeProvider.swift in Sources */,
@@ -570,6 +577,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				944DE3F7DBC7B69AC2F1B56D /* AppSectionTests.swift in Sources */,
+				5CE399FE11A264CF6DB2119F /* BackupTests.swift in Sources */,
 				4AF0AC1E38CA0232B56F8E22 /* HomeTests.swift in Sources */,
 				07F77DA8B1751AB75B8C183E /* JSONStoreTests.swift in Sources */,
 				3F197199D6EF648A9C0380FD /* LauncherTests.swift in Sources */,

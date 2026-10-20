@@ -75,6 +75,11 @@ final class DashboardStore {
         items[i].isWide.toggle()
     }
 
+    func replace(with items: [DashboardItem]) {
+        var seen = Set<DashboardWidget>()
+        self.items = items.filter { seen.insert($0.widget).inserted }
+    }
+
     func reset() {
         store.remove()
         items = Self.defaultLayout

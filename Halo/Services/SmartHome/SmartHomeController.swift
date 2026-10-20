@@ -37,4 +37,12 @@ final class SmartHomeController {
     }
 
     func resetDemo() { demo.reset() }
+
+    func replacePins(_ ids: [String]) { pinned = ids }
+
+    func reset() {
+        pinStore.remove()
+        pinned = ["l-living-ceiling", "t-living", "l-bedroom", "k-entry"]
+        demo.reset()
+    }
 }

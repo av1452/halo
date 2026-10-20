@@ -27,6 +27,10 @@ struct SettingsView: View {
                     WallpaperPicker(selection: $settings.value.wallpaper)
                 }
 
+                SmartHomeSettings()
+                DataSettings()
+                PrivacySettings()
+
                 Section("Units") {
                     Picker("Temperature", selection: $settings.value.temperatureUnit) {
                         ForEach(TemperatureUnit.allCases) { Text($0.symbol).tag($0) }
@@ -123,5 +127,136 @@ extension Bundle {
         let version = infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
         let build = infoDictionary?["CFBundleVersion"] as? String ?? "?"
         return "\(version) (\(build))"
+    }
+}
+
+private struct SmartHomeSettings: View {
+    @Environment(AppModel.self) private var model
+    @State private var confirmReset = false
+
+    var body: some View {
+        @Bindable var controller = model.smartHome
+        Section {
+            Picker("Source", selection: $controller.usingDemo) {
+                Text("Apple Home").tag(false)
+                Text("Demo Home").tag(true)
+            }
+            .pickerStyle(.segmented)
+            if controller.usingDemo {
+                Button("Reset Demo Home", role: .destructive) { confirmReset = true }
+            }
+        } header: {
+            Text("Smart Home")
+        } footer: {
+            Text(controller.usingDemo ? "The demo home is simulated. Nothing real is controlled." : "Halo uses HomeKit to show and control your Apple Home.")
+        }
+        .confirmationDialog("Reset the demo home?", isPresented: $confirmReset, titleVisibility: .visible) {
+            Button("Reset Demo Home", role: .destructive) { model.smartHome.resetDemo() }
+        } message: {
+            Text("All simulated devices return to their starting state.")
+        }
+    }
+}
+
+private struct DataSettings: View {
+    @Environment(AppModel.self) private var model
+    @State private var exportDocument: BackupDocument?
+    @State private var importing = false
+    @State private var pending: HaloBackup?
+    @State private var confirmReset = false
+    @State private var message: String?
+
+    var body: some View {
+        Section {
+            Button("Export Backup", systemImage: "square.and.arrow.up") {
+                exportDocument = (try? model.makeBackup().encoded()).map(BackupDocument.init)
+            }
+            Button("Import Backup", systemImage: "square.and.arrow.down") { importing = true }
+            Button("Reset Halo", systemImage: "arrow.counterclockwise", role: .destructive) { confirmReset = true }
+        } header: {
+            Text("Data")
+        } footer: {
+            Text("Backups are JSON files with your settings, shortcuts, Home layout, Discover favorites, notes and pinned devices. Apple Home, Calendar and Reminders data stay in Apple’s apps and aren’t included.")
+        }
+        .fileExporter(isPresented: Binding(get: { exportDocument != nil }, set: { if !$0 { exportDocument = nil } }),
+                      document: exportDocument, contentType: .json,
+                      defaultFilename: "halo-backup-\(Date.now.formatted(.iso8601.year().month().day()))") { result in
+            if case .success = result { message = "Backup exported." }
+        }
+        .fileImporter(isPresented: $importing, allowedContentTypes: [.json]) { result in
+            do {
+                let url = try result.get()
+                let accessing = url.startAccessingSecurityScopedResource()
+                defer { if accessing { url.stopAccessingSecurityScopedResource() } }
+                pending = try HaloBackup.decode(Data(contentsOf: url))
+            } catch let error as HaloBackup.ImportError {
+                message = error.localizedDescription
+            } catch {
+                message = "That file couldn’t be read."
+            }
+        }
+        .confirmationDialog("Import this backup?", isPresented: Binding(get: { pending != nil }, set: { if !$0 { pending = nil } }), titleVisibility: .visible, presenting: pending) { backup in
+            Button("Import") {
+                Task {
+                    let applied = await model.apply(backup)
+                    message = applied.isEmpty ? "Nothing in that backup could be imported." : "Imported: \(applied.joined(separator: ", "))."
+                }
+            }
+        } message: { backup in
+            Text("This replaces: \(backup.sections.joined(separator: ", ")).")
+        }
+        .confirmationDialog("Reset Halo?", isPresented: $confirmReset, titleVisibility: .visible) {
+            Button("Erase & Reset", role: .destructive) {
+                model.resetAll()
+                message = "Halo was reset to its defaults."
+            }
+        } message: {
+            Text("Your shortcuts, Home layout, notes and settings will be erased from this device. Your Apple Home, calendars and reminders aren’t affected.")
+        }
+        .alert(message ?? "", isPresented: Binding(get: { message != nil }, set: { if !$0 { message = nil } })) {
+            Button("OK", role: .cancel) {}
+        }
+    }
+}
+
+private struct PrivacySettings: View {
+    @Environment(AppModel.self) private var model
+
+    var body: some View {
+        Section {
+            LabeledContent("Apple Home", value: describe(model.smartHome.homeKit.availability))
+            LabeledContent("Apple Music", value: describe(model.music.access))
+            LabeledContent("Calendar", value: describe(model.calendar.eventAccess))
+            LabeledContent("Reminders", value: describe(model.calendar.reminderAccess))
+        } header: {
+            Text("Privacy")
+        } footer: {
+            Text("Halo has no accounts, analytics or tracking. It contacts Apple’s App Store search service when you browse Discover (it receives the app ID or your search term) and Open-Meteo only after you choose a weather location (it receives coordinates rounded to about 1 km). Everything else stays on this device.")
+        }
+    }
+
+    private func describe(_ availability: SmartHomeAvailability) -> String {
+        switch availability {
+        case .ready, .noHome: "Allowed"
+        case .denied: "Off"
+        case .needsPermission: "Not asked"
+        case .loading: "Not asked yet"
+        }
+    }
+
+    private func describe(_ access: MusicController.Access) -> String {
+        switch access {
+        case .authorized: "Allowed"
+        case .denied: "Off"
+        case .notDetermined: "Not asked"
+        }
+    }
+
+    private func describe(_ access: CalendarController.Access) -> String {
+        switch access {
+        case .authorized: "Allowed"
+        case .denied: "Off"
+        case .notDetermined: "Not asked"
+        }
     }
 }

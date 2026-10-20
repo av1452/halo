@@ -100,6 +100,8 @@ final class DiscoverStore {
         state.recents = Array(([app] + state.recents.filter { $0.id != app.id }).prefix(10))
     }
 
+    func replace(with state: State) { self.state = state }
+
     func reset() {
         store.remove()
         state = State()

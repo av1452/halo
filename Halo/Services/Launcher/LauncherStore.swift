@@ -53,6 +53,11 @@ final class LauncherStore {
         state.shortcuts += AppleApps.defaults().filter { !existing.contains($0.name) }
     }
 
+    /// Replaces everything, dropping shortcuts whose URL fails validation.
+    func replace(with state: State) {
+        self.state = State(shortcuts: state.shortcuts.filter { ShortcutURL.normalize($0.url) != nil }, recents: state.recents)
+    }
+
     func reset() {
         store.remove()
         state = State(shortcuts: AppleApps.defaults())
