@@ -57,7 +57,7 @@ struct HomeKitMappingTests {
 
     @Test func writesTheRightCharacteristics() {
         let brightness = HomeKitMapping.write(for: .setBrightness(150), serviceType: HMServiceTypeLightbulb)
-        #expect(brightness.map(\.type) == [HMCharacteristicTypePowerState, HMCharacteristicTypeBrightness])
+        #expect(brightness.map{ $0.type } == [HMCharacteristicTypePowerState, HMCharacteristicTypeBrightness])
         #expect(brightness.last?.value as? Int == 100)
         #expect(HomeKitMapping.write(for: .setLocked(true), serviceType: HMServiceTypeLockMechanism).first?.value as? Int == 1)
         #expect(HomeKitMapping.write(for: .setThermostatMode(.auto), serviceType: HMServiceTypeThermostat).first?.value as? Int == 3)

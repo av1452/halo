@@ -30,6 +30,7 @@ struct RootView: View {
     private func view(for section: AppSection) -> some View {
         switch section {
         case .smartHome: SmartHomeView()
+        case .apps: AppsView()
         default: placeholder(for: section)
         }
     }

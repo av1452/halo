@@ -12,6 +12,13 @@ enum LaunchOptions {
         return .home
     }
 
+    static var initialAppsMode: AppsView.Mode {
+        #if DEBUG
+        if ProcessInfo.processInfo.arguments.contains("-haloDiscover") { return .discover }
+        #endif
+        return .myApps
+    }
+
     static var openSettings: Bool {
         #if DEBUG
         return ProcessInfo.processInfo.arguments.contains("-haloOpenSettings")

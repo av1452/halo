@@ -6,6 +6,9 @@ import SwiftUI
 struct SectionScreen<Content: View>: View {
     let title: String
     var subtitle: String?
+    /// Adds a navigation search field when provided
+    var search: Binding<String>?
+    var searchPrompt = "Search"
     @ViewBuilder var content: Content
 
     @Environment(AppModel.self) private var model
@@ -30,11 +33,25 @@ struct SectionScreen<Content: View>: View {
             .scrollContentBackground(.hidden)
             .background { Wallpaper(style: model.settings.value.wallpaper) }
             .navigationTitle(title)
+            .modifier(OptionalSearch(text: search, prompt: searchPrompt))
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Settings", systemImage: "gearshape") { openSettings() }
                 }
             }
+        }
+    }
+}
+
+private struct OptionalSearch: ViewModifier {
+    let text: Binding<String>?
+    let prompt: String
+
+    func body(content: Content) -> some View {
+        if let text {
+            content.searchable(text: text, prompt: prompt)
+        } else {
+            content
         }
     }
 }
