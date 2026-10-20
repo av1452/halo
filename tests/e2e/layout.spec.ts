@@ -45,3 +45,21 @@ test('dashboard widgets never clip their content', async ({ page }) => {
   const [b, c] = [await button.boundingBox(), await card.boundingBox()]
   expect(b!.x + b!.width).toBeLessThanOrEqual(c!.x + c!.width)
 })
+
+test('shortcut names and favorite stars are not clipped', async ({ page }) => {
+  await page.route(/^https?:\/\/(?!localhost)/, (r) => r.abort())
+  await page.goto('/apps')
+  const grid = page.getByRole('list', { name: 'Shortcuts' })
+  await expect(grid.getByRole('link').first()).toBeVisible()
+  const clipped = await grid.locator('[class*="tileName"]').evaluateAll((els) =>
+    els
+      .filter((el) => {
+        const box = el.getBoundingClientRect()
+        const star = el.querySelector('svg')?.getBoundingClientRect()
+        const starHidden = star ? star.right > box.right + 0.5 || star.bottom > box.bottom + 0.5 : false
+        return el.scrollHeight > el.clientHeight + 1 || el.scrollWidth > el.clientWidth + 1 || starHidden
+      })
+      .map((el) => el.textContent),
+  )
+  expect(clipped).toEqual([])
+})
