@@ -65,3 +65,19 @@ final class AppsUITests: XCTestCase {
         XCTAssertTrue(app.buttons["Add to Apps"].exists)
     }
 }
+
+final class ArrangeUITests: XCTestCase {
+    @MainActor
+    func testArrangeRemovesAShortcut() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-haloResetData", "-haloSection", "apps"]
+        app.launch()
+        app.buttons["Manage"].tap()
+        app.buttons["Arrange"].tap()
+        let remove = app.buttons["Remove Podcasts"]
+        XCTAssertTrue(remove.waitForExistence(timeout: 5))
+        remove.tap()
+        app.buttons["Done"].tap()
+        XCTAssertFalse(app.buttons["Podcasts"].waitForExistence(timeout: 2))
+    }
+}

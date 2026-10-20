@@ -15,6 +15,6 @@ final class SettingsUITests: XCTestCase {
         XCTAssertTrue(pink.isSelected)
 
         app.buttons["Done"].tap()
-        XCTAssertTrue(app.navigationBars["Home"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.otherElements["Clock"].waitForExistence(timeout: 5))
     }
 }

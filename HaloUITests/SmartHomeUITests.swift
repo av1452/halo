@@ -3,6 +3,7 @@ import XCTest
 final class SmartHomeUITests: XCTestCase {
     private func launch(_ extra: [String] = []) -> XCUIApplication {
         let app = XCUIApplication()
+        app.resetAuthorizationStatus(for: .homeKit)
         app.launchArguments = ["-haloResetData", "-haloSection", "smartHome"] + extra
         app.launch()
         return app

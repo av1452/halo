@@ -55,7 +55,7 @@ final class DemoHomeProvider: SmartHomeProvider {
 
     /// Thermostats drift toward their target; the motion sensor occasionally trips.
     func tick(random: () -> Double = { Double.random(in: 0..<1) }) {
-        snapshot.devices = snapshot.devices.map { device in
+        let next = snapshot.devices.map { device in
             var device = device
             switch device.state {
             case .thermostat(let current?, let target, let mode) where mode != .off:
@@ -72,6 +72,8 @@ final class DemoHomeProvider: SmartHomeProvider {
             }
             return device
         }
+        // Only publish real changes; observers re-render on every assignment
+        if next != snapshot.devices { snapshot.devices = next }
     }
 
     // MARK: - Pure state logic

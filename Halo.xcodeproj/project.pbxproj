@@ -7,17 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04409C6CAF72F2E836CE4F3D /* DashboardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB17E7BC17E3CF7A98F370D /* DashboardStore.swift */; };
 		05BDAD41F05431FD089AD726 /* SmartHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31C6D05DA92BF376AA330E3 /* SmartHomeController.swift */; };
 		07F77DA8B1751AB75B8C183E /* JSONStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F49DACEB6F5CAF803C0B05C /* JSONStoreTests.swift */; };
 		0E09E059EB4225D0C6FAF6D9 /* AppOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2534EC25E546686A48F58EA4 /* AppOpener.swift */; };
 		1067A7DD2FECCF740CB36317 /* AppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBECB0AF4721D41CF67C7D5 /* AppSection.swift */; };
 		117AAA2124FF051102D6D05C /* SmartHomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C16619562075425E4A9F3E /* SmartHomeUITests.swift */; };
+		1D82FEDAC6F4F6595F4D4887 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8328E4C7F352FBA41D290DB7 /* HomeView.swift */; };
 		20BA30E34A44C17CD8E6786D /* AppDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D89E514D3361EF7CB51537 /* AppDetailView.swift */; };
 		20D58513E2D7B6A3E33D7C78 /* MusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE8F9D998D477FC9F6DC3E3 /* MusicController.swift */; };
 		2303A5FEEBA4CE37961146EC /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78BDC225DA6B017B70B0F4 /* MediaView.swift */; };
 		25D9088E69AE8E31F8DE504B /* StoreProductPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE6C93E1115CB7F15C2567 /* StoreProductPresenter.swift */; };
 		3F197199D6EF648A9C0380FD /* LauncherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447A0CD2529FA65C1E0CEAD /* LauncherTests.swift */; };
 		45144E9173D1934DC382B4EF /* AppsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCE72D452176B131636CCE /* AppsUITests.swift */; };
+		4AF0AC1E38CA0232B56F8E22 /* HomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FF6BE06000086E8F481FE2 /* HomeTests.swift */; };
 		4D251C4F57E2FF83289ECC04 /* AppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62444A46BD0BC85A8C86B6ED /* AppsView.swift */; };
 		4DD002120D67F9A64CE2C9BF /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C64FBE334DA730C946263 /* SettingsStore.swift */; };
 		501213C6DBC01020FB74D4B0 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A171C5E06043D0DDFA3E5C2 /* AppModel.swift */; };
@@ -26,6 +29,7 @@
 		52670ACE93CA401063775772 /* DemoHomeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D012EBAB8F9097B8365583D8 /* DemoHomeProvider.swift */; };
 		55A65086321B4DA9FF98634E /* SmartHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC557F3FEC6D0CFE4D3A6273 /* SmartHomeTests.swift */; };
 		58FD63D074100E2EA8339081 /* Wallpaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA8E2568EF1DBE20CA36BEF /* Wallpaper.swift */; };
+		62136775E24D1134FBF5521C /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E261D499F1141859349C4A /* CalendarController.swift */; };
 		64C5B00B58602F47C03375E9 /* Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578E03F8AF27E9FF3661D468 /* Shortcut.swift */; };
 		6BC5E32CC3EAFA1AF32032A1 /* LauncherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1424547A837D6A3BA73245 /* LauncherView.swift */; };
 		6CD9CA8CE2BC216B155574D8 /* LaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D06FC70875D18AD4ADBA38 /* LaunchTests.swift */; };
@@ -33,6 +37,7 @@
 		78027569377FC542D9A2BDD6 /* SmartHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4884D9A296C116B1357D4AC9 /* SmartHomeView.swift */; };
 		7CA27A1CDF72A60E404FB5CC /* AppIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D1B6C91D3C219CE0A6F3C /* AppIconView.swift */; };
 		7D376A9D7ED264616AE96382 /* ShortcutEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82458833E0493B60AA3AEDA7 /* ShortcutEditor.swift */; };
+		811071C0C3AA525F58D05310 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B30E84CF01CE37C408A67 /* Widgets.swift */; };
 		8238B69F9FD589548B1221AF /* NowPlayingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A8B53470CAC8F9A81A048B /* NowPlayingCard.swift */; };
 		82DB6586A4C4E826BA2F9FA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D511CE9A8A5F1865C27E086 /* RootView.swift */; };
 		8A872B2AE5B3EB68BEA2CC72 /* SettingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED3AF3DA3C17910BA6C25A5 /* SettingsUITests.swift */; };
@@ -50,6 +55,8 @@
 		EF9968233DEBBFDAE7DC8080 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374D76969C1949B63AA7198B /* Assets.xcassets */; };
 		F056D462C614C892DDA92E38 /* LauncherStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC22B17493BCE499419EEB /* LauncherStore.swift */; };
 		F0BAEF88DDC86A054CABECCC /* JSONStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C299E0AB54E78F4AA53B2DE /* JSONStore.swift */; };
+		F9B2525E34E47F2E7448C7BF /* HomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D67E99F55E751CDD0F518 /* HomeUITests.swift */; };
+		FA87B52A50678AC9FDE53068 /* WeatherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B17CD110BCDD3631F2E67 /* WeatherController.swift */; };
 		FD3B7B2E46E91FB2796CF1E1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214B8C952E2F9BCCD2D5CC3B /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,9 +83,11 @@
 		0B55E802E3DB0C9CBAE1C9DE /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
 		0C299E0AB54E78F4AA53B2DE /* JSONStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStore.swift; sourceTree = "<group>"; };
 		0D5E5AE3FCFE09A9D580D2A4 /* SmartHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeModel.swift; sourceTree = "<group>"; };
+		0F0D67E99F55E751CDD0F518 /* HomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUITests.swift; sourceTree = "<group>"; };
 		1CFC22B17493BCE499419EEB /* LauncherStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherStore.swift; sourceTree = "<group>"; };
 		1F49DACEB6F5CAF803C0B05C /* JSONStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStoreTests.swift; sourceTree = "<group>"; };
 		214B8C952E2F9BCCD2D5CC3B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		240B17CD110BCDD3631F2E67 /* WeatherController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherController.swift; sourceTree = "<group>"; };
 		24A8B53470CAC8F9A81A048B /* NowPlayingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCard.swift; sourceTree = "<group>"; };
 		2534EC25E546686A48F58EA4 /* AppOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOpener.swift; sourceTree = "<group>"; };
 		374D76969C1949B63AA7198B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,6 +97,7 @@
 		4884D9A296C116B1357D4AC9 /* SmartHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeView.swift; sourceTree = "<group>"; };
 		4D511CE9A8A5F1865C27E086 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		578E03F8AF27E9FF3661D468 /* Shortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
+		59FF6BE06000086E8F481FE2 /* HomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTests.swift; sourceTree = "<group>"; };
 		5ED3AF3DA3C17910BA6C25A5 /* SettingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUITests.swift; sourceTree = "<group>"; };
 		6167F49CFE25E2BD92A284CF /* HaloTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = HaloTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62444A46BD0BC85A8C86B6ED /* AppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsView.swift; sourceTree = "<group>"; };
@@ -98,9 +108,11 @@
 		779336C5C3E4193FE3363A16 /* AppSectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSectionTests.swift; sourceTree = "<group>"; };
 		7C1424547A837D6A3BA73245 /* LauncherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherView.swift; sourceTree = "<group>"; };
 		82458833E0493B60AA3AEDA7 /* ShortcutEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutEditor.swift; sourceTree = "<group>"; };
+		8328E4C7F352FBA41D290DB7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8447A0CD2529FA65C1E0CEAD /* LauncherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherTests.swift; sourceTree = "<group>"; };
 		88E089094EBEBD25EE06F784 /* SmartHomeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeProvider.swift; sourceTree = "<group>"; };
 		91151C1368F59D315E549EE2 /* SectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionScreen.swift; sourceTree = "<group>"; };
+		91E261D499F1141859349C4A /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		95C16619562075425E4A9F3E /* SmartHomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeUITests.swift; sourceTree = "<group>"; };
 		9C25CD10FBE43DDF838230EF /* Halo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Halo.entitlements; sourceTree = "<group>"; };
 		9FE8F9D998D477FC9F6DC3E3 /* MusicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicController.swift; sourceTree = "<group>"; };
@@ -119,6 +131,8 @@
 		F224A90F288DF2559B7C971E /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		F31C6D05DA92BF376AA330E3 /* SmartHomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeController.swift; sourceTree = "<group>"; };
 		F5871C96034070134A1E1A01 /* MediaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaUITests.swift; sourceTree = "<group>"; };
+		F63B30E84CF01CE37C408A67 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
+		FAB17E7BC17E3CF7A98F370D /* DashboardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardStore.swift; sourceTree = "<group>"; };
 		FBBECB0AF4721D41CF67C7D5 /* AppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				779336C5C3E4193FE3363A16 /* AppSectionTests.swift */,
+				59FF6BE06000086E8F481FE2 /* HomeTests.swift */,
 				1F49DACEB6F5CAF803C0B05C /* JSONStoreTests.swift */,
 				8447A0CD2529FA65C1E0CEAD /* LauncherTests.swift */,
 				DC557F3FEC6D0CFE4D3A6273 /* SmartHomeTests.swift */,
@@ -161,13 +176,24 @@
 			path = HaloTests;
 			sourceTree = "<group>";
 		};
+		2AF46260E54C4AE1C2CA5601 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				91E261D499F1141859349C4A /* CalendarController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		2EE3C8E02F023506641D9C72 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				29EDF273A9093CC954CD12B4 /* AppStore */,
+				2AF46260E54C4AE1C2CA5601 /* Calendar */,
+				865916561E43E272B49CF9DA /* Dashboard */,
 				35DBBDD8DEF6BE2424758B20 /* Launcher */,
 				3D3499EFD092D1CC53F5FF65 /* Media */,
 				7DB224C019D81C0CEE64BABD /* SmartHome */,
+				35F5EF332B2CCD8D9CDE9581 /* Weather */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -180,6 +206,14 @@
 				578E03F8AF27E9FF3661D468 /* Shortcut.swift */,
 			);
 			path = Launcher;
+			sourceTree = "<group>";
+		};
+		35F5EF332B2CCD8D9CDE9581 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				240B17CD110BCDD3631F2E67 /* WeatherController.swift */,
+			);
+			path = Weather;
 			sourceTree = "<group>";
 		};
 		3D3499EFD092D1CC53F5FF65 /* Media */ = {
@@ -268,6 +302,14 @@
 			path = SmartHome;
 			sourceTree = "<group>";
 		};
+		865916561E43E272B49CF9DA /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				FAB17E7BC17E3CF7A98F370D /* DashboardStore.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
 		8BD213625EC6271C06E4B1A0 /* SmartHome */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				C5DCE72D452176B131636CCE /* AppsUITests.swift */,
+				0F0D67E99F55E751CDD0F518 /* HomeUITests.swift */,
 				A6D06FC70875D18AD4ADBA38 /* LaunchTests.swift */,
 				F5871C96034070134A1E1A01 /* MediaUITests.swift */,
 				5ED3AF3DA3C17910BA6C25A5 /* SettingsUITests.swift */,
@@ -332,6 +375,8 @@
 		F8F94679FFF1B65DD1CF87BF /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				8328E4C7F352FBA41D290DB7 /* HomeView.swift */,
+				F63B30E84CF01CE37C408A67 /* Widgets.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -471,6 +516,8 @@
 				1067A7DD2FECCF740CB36317 /* AppSection.swift in Sources */,
 				A648D3320637E4CAA74E81CC /* AppStoreClient.swift in Sources */,
 				4D251C4F57E2FF83289ECC04 /* AppsView.swift in Sources */,
+				62136775E24D1134FBF5521C /* CalendarController.swift in Sources */,
+				04409C6CAF72F2E836CE4F3D /* DashboardStore.swift in Sources */,
 				52670ACE93CA401063775772 /* DemoHomeProvider.swift in Sources */,
 				DD6F1317D234686733A63961 /* DeviceDetailView.swift in Sources */,
 				C6E8C96657E50AE00B321D08 /* DeviceTile.swift in Sources */,
@@ -479,6 +526,7 @@
 				511D6875F84294B3EB8B459E /* GlassCard.swift in Sources */,
 				B3C64E4DCCA26A09E4CCD65D /* HaloApp.swift in Sources */,
 				9AD739464ADBFD9B7ECE1424 /* HomeKitProvider.swift in Sources */,
+				1D82FEDAC6F4F6595F4D4887 /* HomeView.swift in Sources */,
 				F0BAEF88DDC86A054CABECCC /* JSONStore.swift in Sources */,
 				E97C3375742DBB2149218C57 /* LaunchOptions.swift in Sources */,
 				F056D462C614C892DDA92E38 /* LauncherStore.swift in Sources */,
@@ -498,6 +546,8 @@
 				78027569377FC542D9A2BDD6 /* SmartHomeView.swift in Sources */,
 				25D9088E69AE8E31F8DE504B /* StoreProductPresenter.swift in Sources */,
 				58FD63D074100E2EA8339081 /* Wallpaper.swift in Sources */,
+				FA87B52A50678AC9FDE53068 /* WeatherController.swift in Sources */,
+				811071C0C3AA525F58D05310 /* Widgets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				944DE3F7DBC7B69AC2F1B56D /* AppSectionTests.swift in Sources */,
+				4AF0AC1E38CA0232B56F8E22 /* HomeTests.swift in Sources */,
 				07F77DA8B1751AB75B8C183E /* JSONStoreTests.swift in Sources */,
 				3F197199D6EF648A9C0380FD /* LauncherTests.swift in Sources */,
 				55A65086321B4DA9FF98634E /* SmartHomeTests.swift in Sources */,
@@ -517,6 +568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45144E9173D1934DC382B4EF /* AppsUITests.swift in Sources */,
+				F9B2525E34E47F2E7448C7BF /* HomeUITests.swift in Sources */,
 				6CD9CA8CE2BC216B155574D8 /* LaunchTests.swift in Sources */,
 				C815013323F2193845CD447A /* MediaUITests.swift in Sources */,
 				8A872B2AE5B3EB68BEA2CC72 /* SettingsUITests.swift in Sources */,

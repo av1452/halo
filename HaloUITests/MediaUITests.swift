@@ -4,6 +4,7 @@ final class MediaUITests: XCTestCase {
     @MainActor
     func testMusicAccessFlowAndMediaApps() throws {
         let app = XCUIApplication()
+        app.resetAuthorizationStatus(for: .mediaLibrary)
         app.launchArguments = ["-haloResetData", "-haloSection", "media"]
         app.launch()
 

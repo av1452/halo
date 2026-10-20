@@ -21,6 +21,7 @@ struct RootView: View {
         .tabViewStyle(.sidebarAdaptable)
         .tabBarMinimizeBehavior(.onScrollDown)
         .environment(\.openSettings, { showingSettings = true })
+        .environment(\.selectSection, { selection = $0 })
         .sheet(isPresented: $showingSettings) {
             SettingsView()
         }
@@ -29,6 +30,7 @@ struct RootView: View {
     @ViewBuilder
     private func view(for section: AppSection) -> some View {
         switch section {
+        case .home: HomeView()
         case .smartHome: SmartHomeView()
         case .apps: AppsView()
         case .media: MediaView()

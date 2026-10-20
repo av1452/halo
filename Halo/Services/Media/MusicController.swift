@@ -32,7 +32,8 @@ final class MusicController {
 
     func requestAccess() async {
         let status = await withCheckedContinuation { continuation in
-            MPMediaLibrary.requestAuthorization { continuation.resume(returning: $0) }
+            // The callback may arrive off the main thread
+            MPMediaLibrary.requestAuthorization { @Sendable status in continuation.resume(returning: status) }
         }
         access = Self.map(status)
         if access == .authorized { start() }

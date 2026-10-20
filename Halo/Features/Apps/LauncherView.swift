@@ -145,14 +145,21 @@ private struct ArrangeView: View {
         NavigationStack {
             List {
                 ForEach(model.launcher.shortcuts) { shortcut in
-                    Label {
-                        Text(shortcut.name)
-                    } icon: {
-                        AppIconView(symbol: shortcut.symbol, colorHex: shortcut.colorHex, size: 30)
+                    HStack {
+                        Button("Remove \(shortcut.name)", systemImage: "minus.circle.fill", role: .destructive) {
+                            withAnimation { model.launcher.remove([shortcut.id]) }
+                        }
+                        .labelStyle(.iconOnly)
+                        .foregroundStyle(.red)
+                        .buttonStyle(.borderless)
+                        Label {
+                            Text(shortcut.name)
+                        } icon: {
+                            AppIconView(symbol: shortcut.symbol, colorHex: shortcut.colorHex, size: 30)
+                        }
                     }
                 }
                 .onMove { model.launcher.move(from: $0, to: $1) }
-                .onDelete { offsets in model.launcher.remove(Set(offsets.map { model.launcher.shortcuts[$0].id })) }
             }
             .environment(\.editMode, .constant(.active))
             .navigationTitle("Arrange")
