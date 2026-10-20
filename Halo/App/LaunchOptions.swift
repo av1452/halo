@@ -20,6 +20,14 @@ enum LaunchOptions {
         #endif
     }
 
+    static var demoHome: Bool {
+        #if DEBUG
+        return ProcessInfo.processInfo.arguments.contains("-haloDemoHome")
+        #else
+        return false
+        #endif
+    }
+
     /// Stores live in a throwaway directory so tests start fresh and never touch real data.
     static var isolatedStorage: Bool {
         #if DEBUG

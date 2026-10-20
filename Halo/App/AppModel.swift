@@ -4,8 +4,11 @@ import SwiftUI
 @MainActor @Observable
 final class AppModel {
     let settings: SettingsStore
+    let smartHome: SmartHomeController
 
     init(directory: URL = JSONStore<Settings>.defaultDirectory) {
         settings = SettingsStore(store: JSONStore(name: "settings", directory: directory))
+        smartHome = SmartHomeController(settings: settings, directory: directory)
+        if LaunchOptions.demoHome { settings.value.smartHomeDemo = true }
     }
 }

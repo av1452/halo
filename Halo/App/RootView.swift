@@ -28,6 +28,13 @@ struct RootView: View {
 
     @ViewBuilder
     private func view(for section: AppSection) -> some View {
+        switch section {
+        case .smartHome: SmartHomeView()
+        default: placeholder(for: section)
+        }
+    }
+
+    private func placeholder(for section: AppSection) -> some View {
         SectionScreen(title: section.title) {
             GlassCard {
                 Label("Coming soon", systemImage: section.systemImage)

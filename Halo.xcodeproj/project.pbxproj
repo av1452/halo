@@ -7,17 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05BDAD41F05431FD089AD726 /* SmartHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31C6D05DA92BF376AA330E3 /* SmartHomeController.swift */; };
 		07F77DA8B1751AB75B8C183E /* JSONStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F49DACEB6F5CAF803C0B05C /* JSONStoreTests.swift */; };
 		1067A7DD2FECCF740CB36317 /* AppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBECB0AF4721D41CF67C7D5 /* AppSection.swift */; };
+		117AAA2124FF051102D6D05C /* SmartHomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C16619562075425E4A9F3E /* SmartHomeUITests.swift */; };
 		4DD002120D67F9A64CE2C9BF /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C64FBE334DA730C946263 /* SettingsStore.swift */; };
 		501213C6DBC01020FB74D4B0 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A171C5E06043D0DDFA3E5C2 /* AppModel.swift */; };
+		50D7C0564FFEA7C4B55F6DFB /* SmartHomeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E089094EBEBD25EE06F784 /* SmartHomeProvider.swift */; };
 		511D6875F84294B3EB8B459E /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B55E802E3DB0C9CBAE1C9DE /* GlassCard.swift */; };
+		52670ACE93CA401063775772 /* DemoHomeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D012EBAB8F9097B8365583D8 /* DemoHomeProvider.swift */; };
+		55A65086321B4DA9FF98634E /* SmartHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC557F3FEC6D0CFE4D3A6273 /* SmartHomeTests.swift */; };
 		58FD63D074100E2EA8339081 /* Wallpaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA8E2568EF1DBE20CA36BEF /* Wallpaper.swift */; };
 		6CD9CA8CE2BC216B155574D8 /* LaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D06FC70875D18AD4ADBA38 /* LaunchTests.swift */; };
+		71D5F1E10DB666760F7FD5F8 /* SmartHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5E5AE3FCFE09A9D580D2A4 /* SmartHomeModel.swift */; };
+		78027569377FC542D9A2BDD6 /* SmartHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4884D9A296C116B1357D4AC9 /* SmartHomeView.swift */; };
 		82DB6586A4C4E826BA2F9FA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D511CE9A8A5F1865C27E086 /* RootView.swift */; };
 		8A872B2AE5B3EB68BEA2CC72 /* SettingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED3AF3DA3C17910BA6C25A5 /* SettingsUITests.swift */; };
 		944DE3F7DBC7B69AC2F1B56D /* AppSectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779336C5C3E4193FE3363A16 /* AppSectionTests.swift */; };
+		9AD739464ADBFD9B7ECE1424 /* HomeKitProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7257C72333B17B8121F009 /* HomeKitProvider.swift */; };
 		B3C64E4DCCA26A09E4CCD65D /* HaloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EEE7F4A343D0644CB868C /* HaloApp.swift */; };
+		C6E8C96657E50AE00B321D08 /* DeviceTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEEDA3FC0519F5372F28097 /* DeviceTile.swift */; };
+		DD6F1317D234686733A63961 /* DeviceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F780B17B3C2B9AEEC12311 /* DeviceDetailView.swift */; };
 		E56BA5F06C645C4A3869C644 /* SectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91151C1368F59D315E549EE2 /* SectionScreen.swift */; };
 		E97C3375742DBB2149218C57 /* LaunchOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18363C63151BCFF45421FA5 /* LaunchOptions.swift */; };
 		EF9968233DEBBFDAE7DC8080 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374D76969C1949B63AA7198B /* Assets.xcassets */; };
@@ -47,22 +57,32 @@
 		0A171C5E06043D0DDFA3E5C2 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		0B55E802E3DB0C9CBAE1C9DE /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
 		0C299E0AB54E78F4AA53B2DE /* JSONStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStore.swift; sourceTree = "<group>"; };
+		0D5E5AE3FCFE09A9D580D2A4 /* SmartHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeModel.swift; sourceTree = "<group>"; };
 		1F49DACEB6F5CAF803C0B05C /* JSONStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStoreTests.swift; sourceTree = "<group>"; };
 		214B8C952E2F9BCCD2D5CC3B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		374D76969C1949B63AA7198B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3B7257C72333B17B8121F009 /* HomeKitProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeKitProvider.swift; sourceTree = "<group>"; };
 		3F2C170BE176BC90FE577F40 /* HaloUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = HaloUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		435EEE7F4A343D0644CB868C /* HaloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaloApp.swift; sourceTree = "<group>"; };
+		4884D9A296C116B1357D4AC9 /* SmartHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeView.swift; sourceTree = "<group>"; };
 		4D511CE9A8A5F1865C27E086 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		5ED3AF3DA3C17910BA6C25A5 /* SettingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUITests.swift; sourceTree = "<group>"; };
 		6167F49CFE25E2BD92A284CF /* HaloTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = HaloTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA8E2568EF1DBE20CA36BEF /* Wallpaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallpaper.swift; sourceTree = "<group>"; };
 		779336C5C3E4193FE3363A16 /* AppSectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSectionTests.swift; sourceTree = "<group>"; };
+		88E089094EBEBD25EE06F784 /* SmartHomeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeProvider.swift; sourceTree = "<group>"; };
 		91151C1368F59D315E549EE2 /* SectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionScreen.swift; sourceTree = "<group>"; };
+		95C16619562075425E4A9F3E /* SmartHomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeUITests.swift; sourceTree = "<group>"; };
 		9C25CD10FBE43DDF838230EF /* Halo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Halo.entitlements; sourceTree = "<group>"; };
 		A6D06FC70875D18AD4ADBA38 /* LaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTests.swift; sourceTree = "<group>"; };
 		AFF61F535CD50A67635A6A27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D012EBAB8F9097B8365583D8 /* DemoHomeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoHomeProvider.swift; sourceTree = "<group>"; };
 		DA3E1B8904AC903EF6240A91 /* Halo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Halo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC557F3FEC6D0CFE4D3A6273 /* SmartHomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeTests.swift; sourceTree = "<group>"; };
+		DFEEDA3FC0519F5372F28097 /* DeviceTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTile.swift; sourceTree = "<group>"; };
+		E4F780B17B3C2B9AEEC12311 /* DeviceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailView.swift; sourceTree = "<group>"; };
 		F18363C63151BCFF45421FA5 /* LaunchOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchOptions.swift; sourceTree = "<group>"; };
+		F31C6D05DA92BF376AA330E3 /* SmartHomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeController.swift; sourceTree = "<group>"; };
 		FBBECB0AF4721D41CF67C7D5 /* AppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +107,7 @@
 			children = (
 				779336C5C3E4193FE3363A16 /* AppSectionTests.swift */,
 				1F49DACEB6F5CAF803C0B05C /* JSONStoreTests.swift */,
+				DC557F3FEC6D0CFE4D3A6273 /* SmartHomeTests.swift */,
 			);
 			path = HaloTests;
 			sourceTree = "<group>";
@@ -94,6 +115,7 @@
 		2EE3C8E02F023506641D9C72 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				7DB224C019D81C0CEE64BABD /* SmartHome */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -164,9 +186,24 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		7DB224C019D81C0CEE64BABD /* SmartHome */ = {
+			isa = PBXGroup;
+			children = (
+				D012EBAB8F9097B8365583D8 /* DemoHomeProvider.swift */,
+				3B7257C72333B17B8121F009 /* HomeKitProvider.swift */,
+				F31C6D05DA92BF376AA330E3 /* SmartHomeController.swift */,
+				0D5E5AE3FCFE09A9D580D2A4 /* SmartHomeModel.swift */,
+				88E089094EBEBD25EE06F784 /* SmartHomeProvider.swift */,
+			);
+			path = SmartHome;
+			sourceTree = "<group>";
+		};
 		8BD213625EC6271C06E4B1A0 /* SmartHome */ = {
 			isa = PBXGroup;
 			children = (
+				E4F780B17B3C2B9AEEC12311 /* DeviceDetailView.swift */,
+				DFEEDA3FC0519F5372F28097 /* DeviceTile.swift */,
+				4884D9A296C116B1357D4AC9 /* SmartHomeView.swift */,
 			);
 			path = SmartHome;
 			sourceTree = "<group>";
@@ -176,6 +213,7 @@
 			children = (
 				A6D06FC70875D18AD4ADBA38 /* LaunchTests.swift */,
 				5ED3AF3DA3C17910BA6C25A5 /* SettingsUITests.swift */,
+				95C16619562075425E4A9F3E /* SmartHomeUITests.swift */,
 			);
 			path = HaloUITests;
 			sourceTree = "<group>";
@@ -350,14 +388,22 @@
 			files = (
 				501213C6DBC01020FB74D4B0 /* AppModel.swift in Sources */,
 				1067A7DD2FECCF740CB36317 /* AppSection.swift in Sources */,
+				52670ACE93CA401063775772 /* DemoHomeProvider.swift in Sources */,
+				DD6F1317D234686733A63961 /* DeviceDetailView.swift in Sources */,
+				C6E8C96657E50AE00B321D08 /* DeviceTile.swift in Sources */,
 				511D6875F84294B3EB8B459E /* GlassCard.swift in Sources */,
 				B3C64E4DCCA26A09E4CCD65D /* HaloApp.swift in Sources */,
+				9AD739464ADBFD9B7ECE1424 /* HomeKitProvider.swift in Sources */,
 				F0BAEF88DDC86A054CABECCC /* JSONStore.swift in Sources */,
 				E97C3375742DBB2149218C57 /* LaunchOptions.swift in Sources */,
 				82DB6586A4C4E826BA2F9FA1 /* RootView.swift in Sources */,
 				E56BA5F06C645C4A3869C644 /* SectionScreen.swift in Sources */,
 				4DD002120D67F9A64CE2C9BF /* SettingsStore.swift in Sources */,
 				FD3B7B2E46E91FB2796CF1E1 /* SettingsView.swift in Sources */,
+				05BDAD41F05431FD089AD726 /* SmartHomeController.swift in Sources */,
+				71D5F1E10DB666760F7FD5F8 /* SmartHomeModel.swift in Sources */,
+				50D7C0564FFEA7C4B55F6DFB /* SmartHomeProvider.swift in Sources */,
+				78027569377FC542D9A2BDD6 /* SmartHomeView.swift in Sources */,
 				58FD63D074100E2EA8339081 /* Wallpaper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +414,7 @@
 			files = (
 				944DE3F7DBC7B69AC2F1B56D /* AppSectionTests.swift in Sources */,
 				07F77DA8B1751AB75B8C183E /* JSONStoreTests.swift in Sources */,
+				55A65086321B4DA9FF98634E /* SmartHomeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +424,7 @@
 			files = (
 				6CD9CA8CE2BC216B155574D8 /* LaunchTests.swift in Sources */,
 				8A872B2AE5B3EB68BEA2CC72 /* SettingsUITests.swift in Sources */,
+				117AAA2124FF051102D6D05C /* SmartHomeUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
