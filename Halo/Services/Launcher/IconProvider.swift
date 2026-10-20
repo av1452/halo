@@ -47,7 +47,9 @@ final class IconProvider {
         for shortcut in shortcuts {
             guard let key = Self.key(for: shortcut), !attempted.contains(key) else { continue }
             attempted.insert(key)
-            if let cached = readCache(key) {
+            // Read and decode the cached file off the main thread
+            let directory = self.directory
+            if let cached = await Task.detached(priority: .userInitiated, operation: { Self.readCache(key, in: directory) }).value {
                 images[key] = cached
             } else if let id = shortcut.appStoreID {
                 appIDs[id] = key
@@ -89,14 +91,25 @@ final class IconProvider {
         return image
     }
 
+    /// Icons are shown at most ~76pt, so keep a 228px copy (76pt × 3) that's
+    /// already decoded; drawing it while scrolling is then just a blit.
+    nonisolated static let pixelSize: CGFloat = 228
+
+    nonisolated static func prepared(_ image: UIImage) -> UIImage {
+        let target = CGSize(width: pixelSize, height: pixelSize)
+        if image.size.width * image.scale <= pixelSize, let decoded = image.preparingForDisplay() { return decoded }
+        return image.preparingThumbnail(of: target) ?? image
+    }
+
     private func store(_ image: UIImage, key: String) {
+        let image = Self.prepared(image)
         images[key] = image
         guard let png = image.pngData() else { return }
         try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         try? png.write(to: directory.appendingPathComponent("\(key).png"), options: .atomic)
     }
 
-    private func readCache(_ key: String) -> UIImage? {
-        (try? Data(contentsOf: directory.appendingPathComponent("\(key).png"))).flatMap(UIImage.init(data:))
+    nonisolated private static func readCache(_ key: String, in directory: URL) -> UIImage? {
+        (try? Data(contentsOf: directory.appendingPathComponent("\(key).png"))).flatMap(UIImage.init(data:)).map(prepared)
     }
 }

@@ -34,6 +34,7 @@ final class AppModel {
     /// Adds popular apps found on this device to Apps and removes ones that were uninstalled.
     @discardableResult
     func syncInstalledApps() -> LauncherStore.SyncResult {
+        defer { opener.refreshInstalled(launcher.shortcuts) }
         guard settings.value.detectInstalledApps else { return .init() }
         return launcher.syncInstalled { app in
             URL(string: app.url).map { UIApplication.shared.canOpenURL($0) } ?? false

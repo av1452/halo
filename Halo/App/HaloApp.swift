@@ -14,6 +14,11 @@ struct HaloApp: App {
                 .environment(model)
                 .preferredColorScheme(model.settings.value.appearance.colorScheme)
                 .tint(model.settings.value.accent.color)
+                #if DEBUG || BENCHMARK
+                .overlay(alignment: .topLeading) {
+                    if ProcessInfo.processInfo.arguments.contains("-haloFrameMonitor") { FrameMonitorOverlay() }
+                }
+                #endif
                 // Pick up apps installed or deleted while Halo was in the background
                 .onChange(of: scenePhase, initial: true) { _, phase in
                     if phase == .active { model.syncInstalledApps() }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0023C79BADFFC177DC9A5AC2 /* FrameMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B529E888A11C8A8A49B612 /* FrameMonitor.swift */; };
 		02656718E7D7098345E2EFB5 /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D7C7D4CBD44F54FE81A98 /* SearchTests.swift */; };
 		04409C6CAF72F2E836CE4F3D /* DashboardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB17E7BC17E3CF7A98F370D /* DashboardStore.swift */; };
 		05BDAD41F05431FD089AD726 /* SmartHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31C6D05DA92BF376AA330E3 /* SmartHomeController.swift */; };
@@ -137,6 +138,7 @@
 		AA621467AB364A9CFB9A4D1D /* IconProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconProvider.swift; sourceTree = "<group>"; };
 		AFF61F535CD50A67635A6A27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B06ACC2BA0FDAACD9FB376FB /* DiscoverCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCatalog.swift; sourceTree = "<group>"; };
+		C0B529E888A11C8A8A49B612 /* FrameMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameMonitor.swift; sourceTree = "<group>"; };
 		C5DCE72D452176B131636CCE /* AppsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsUITests.swift; sourceTree = "<group>"; };
 		CA78BDC225DA6B017B70B0F4 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
 		D012EBAB8F9097B8365583D8 /* DemoHomeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoHomeProvider.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 			children = (
 				0A171C5E06043D0DDFA3E5C2 /* AppModel.swift */,
 				FBBECB0AF4721D41CF67C7D5 /* AppSection.swift */,
+				C0B529E888A11C8A8A49B612 /* FrameMonitor.swift */,
 				435EEE7F4A343D0644CB868C /* HaloApp.swift */,
 				F18363C63151BCFF45421FA5 /* LaunchOptions.swift */,
 				4D511CE9A8A5F1865C27E086 /* RootView.swift */,
@@ -557,6 +560,7 @@
 				C6E8C96657E50AE00B321D08 /* DeviceTile.swift in Sources */,
 				B9713C79629FDCA937A249CA /* DiscoverCatalog.swift in Sources */,
 				D0C6DF753EFA47BC33117684 /* DiscoverView.swift in Sources */,
+				0023C79BADFFC177DC9A5AC2 /* FrameMonitor.swift in Sources */,
 				511D6875F84294B3EB8B459E /* GlassCard.swift in Sources */,
 				B3C64E4DCCA26A09E4CCD65D /* HaloApp.swift in Sources */,
 				9AD739464ADBFD9B7ECE1424 /* HomeKitProvider.swift in Sources */,

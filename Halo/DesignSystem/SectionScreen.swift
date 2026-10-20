@@ -16,7 +16,9 @@ struct SectionScreen<Content: View>: View {
 
     var body: some View {
         NavigationStack {
+            ScrollViewReader { proxy in
             ScrollView {
+                Color.clear.frame(height: 0).id(BenchmarkAnchor.top)
                 VStack(alignment: .leading, spacing: 20) {
                     if let subtitle {
                         Text(subtitle)
@@ -29,6 +31,11 @@ struct SectionScreen<Content: View>: View {
                 .padding(.bottom, 24)
                 .frame(maxWidth: 1100)
                 .frame(maxWidth: .infinity)
+                Color.clear.frame(height: 0).id(BenchmarkAnchor.bottom)
+            }
+            #if DEBUG || BENCHMARK
+            .task { await Benchmark.autoScroll(proxy) }
+            #endif
             }
             .scrollContentBackground(.hidden)
             .background { Wallpaper(style: model.settings.value.wallpaper) }
@@ -93,3 +100,28 @@ extension EnvironmentValues {
         set { self[OpenSettingsKey.self] = newValue }
     }
 }
+
+enum BenchmarkAnchor: Hashable { case top, bottom }
+
+
+#if DEBUG || BENCHMARK
+/// Debug-only benchmarks driven by launch arguments, so frame timing can be
+/// measured without XCTest (whose accessibility queries slow the app down).
+@MainActor
+enum Benchmark {
+
+    static func autoScroll(_ proxy: ScrollViewProxy) async {
+        guard ProcessInfo.processInfo.arguments.contains("-haloBenchScroll") else { return }
+        try? await Task.sleep(for: .seconds(3))  // let data and icons load
+        FrameMonitor.shared.start()
+        FrameMonitor.shared.reset()
+        for _ in 0..<3 {
+            withAnimation(.easeInOut(duration: 1.0)) { proxy.scrollTo(BenchmarkAnchor.bottom, anchor: .bottom) }
+            try? await Task.sleep(for: .seconds(1.3))
+            withAnimation(.easeInOut(duration: 1.0)) { proxy.scrollTo(BenchmarkAnchor.top, anchor: .top) }
+            try? await Task.sleep(for: .seconds(1.3))
+        }
+        print("BENCH scroll: \(FrameMonitor.shared.summary)")
+    }
+}
+#endif

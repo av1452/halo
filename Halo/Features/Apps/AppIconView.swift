@@ -22,7 +22,6 @@ struct AppIconView: View {
                     .strokeBorder(LinearGradient(colors: [.white.opacity(0.55), .white.opacity(0.05)], startPoint: .top, endPoint: .bottom), lineWidth: 1)
             }
             .frame(width: size, height: size)
-            .shadow(color: .black.opacity(0.15), radius: 4, y: 2)
             .accessibilityHidden(true)
     }
 }

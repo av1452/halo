@@ -135,6 +135,22 @@ xcodebuild test -project Halo.xcodeproj -scheme Halo \
 
 GitHub Actions runs both on every push and pull request (`.github/workflows/ios.yml`).
 
+### Performance benchmarks
+
+Debug builds include a frame monitor and self-driving benchmarks that run
+without XCTest (whose accessibility queries slow the app down while
+measuring). Launch with `-haloBenchScroll` (plus `-haloSection apps`, `home` or
+`smartHome`) to scroll a section up and down, or `-haloBenchTabs` to switch
+tabs. Results print to the console as late-frame counts, e.g.:
+
+```sh
+xcrun simctl launch --console-pty booted io.github.av1452.halo -haloSection apps -haloDemoHome -haloBenchScroll
+# BENCH scroll: frames=478 hitches=3 hitchMs=67 worstMs=50
+```
+
+The Simulator draws Liquid Glass on the Mac's CPU, so treat its numbers as
+before/after comparisons; a device is smoother.
+
 ### Verified vs. not yet verified
 
 Verified in the iOS 26.1 Simulator on iPhone 17 Pro and iPad Pro 11-inch:

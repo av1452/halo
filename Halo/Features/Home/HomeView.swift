@@ -5,30 +5,39 @@ struct HomeView: View {
     @Environment(\.horizontalSizeClass) private var sizeClass
     @State private var customizing = false
 
+    /// Refreshed on each minute boundary. Only the greeting and date depend on it,
+    /// so the navigation stack isn't rebuilt by a timeline wrapping the whole screen.
+    @State private var now = Date.now
+
     var body: some View {
-        TimelineView(.everyMinute) { context in
-            SectionScreen(title: greeting(at: context.date), subtitle: context.date.formatted(.dateTime.weekday(.wide).month(.wide).day())) {
-                let items = model.dashboard.items
-                if items.isEmpty {
-                    ContentUnavailableView {
-                        Label("Your Home Is Empty", systemImage: "square.grid.2x2")
-                    } actions: {
-                        Button("Customize Home") { customizing = true }.buttonStyle(.glassProminent)
-                    }
-                    .glassEffect(in: .rect(cornerRadius: 28))
+        SectionScreen(title: greeting(at: now), subtitle: now.formatted(.dateTime.weekday(.wide).month(.wide).day())) {
+            let items = model.dashboard.items
+            if items.isEmpty {
+                ContentUnavailableView {
+                    Label("Your Home Is Empty", systemImage: "square.grid.2x2")
+                } actions: {
+                    Button("Customize Home") { customizing = true }.buttonStyle(.glassProminent)
                 }
-                ForEach(Array(DashboardStore.rows(for: items, columns: sizeClass == .regular ? 2 : 1).enumerated()), id: \.offset) { _, row in
-                    HStack(alignment: .top, spacing: 16) {
-                        ForEach(row) { item in widget(item.widget, date: context.date) }
+                .glassEffect(in: .rect(cornerRadius: 28))
+            }
+            ForEach(Array(DashboardStore.rows(for: items, columns: sizeClass == .regular ? 2 : 1).enumerated()), id: \.offset) { _, row in
+                HStack(alignment: .top, spacing: 16) {
+                    ForEach(row) { item in widget(item.widget, date: now) }
+                }
+            }
+            // Inside the content so it lands in SectionScreen's NavigationStack
+            Color.clear.frame(height: 0)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Customize Home", systemImage: "slider.horizontal.3") { customizing = true }
                     }
                 }
-                // Inside the content so it lands in SectionScreen's NavigationStack
-                Color.clear.frame(height: 0)
-                    .toolbar {
-                        ToolbarItem(placement: .topBarTrailing) {
-                            Button("Customize Home", systemImage: "slider.horizontal.3") { customizing = true }
-                        }
-                    }
+        }
+        .task {
+            while !Task.isCancelled {
+                let seconds = 60 - Calendar.current.component(.second, from: .now)
+                try? await Task.sleep(for: .seconds(seconds))
+                now = .now
             }
         }
         .sheet(isPresented: $customizing) { CustomizeHomeView() }

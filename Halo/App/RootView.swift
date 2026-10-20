@@ -25,6 +25,22 @@ struct RootView: View {
         .sheet(isPresented: $showingSettings) {
             SettingsView()
         }
+        #if DEBUG || BENCHMARK
+        .task {
+            // Debug-only tab-switching benchmark (-haloBenchTabs)
+            guard ProcessInfo.processInfo.arguments.contains("-haloBenchTabs") else { return }
+            try? await Task.sleep(for: .seconds(3))
+            FrameMonitor.shared.start()
+            let tour: [AppSection] = [.apps, .smartHome, .media, .home]
+            // First visits build each tab; repeat visits show the cost of switching alone
+            FrameMonitor.shared.reset()
+            for section in tour { selection = section; try? await Task.sleep(for: .seconds(0.8)) }
+            let first = FrameMonitor.shared.summary
+            FrameMonitor.shared.reset()
+            for section in tour + tour { selection = section; try? await Task.sleep(for: .seconds(0.8)) }
+            print("BENCH tabs: first[\(first)] repeat[\(FrameMonitor.shared.summary)]")
+        }
+        #endif
     }
 
     @ViewBuilder

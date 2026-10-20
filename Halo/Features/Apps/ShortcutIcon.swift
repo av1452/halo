@@ -10,17 +10,12 @@ struct ShortcutIcon: View {
     var body: some View {
         Group {
             if let image = model.icons.image(for: shortcut) {
+                // Pre-sized bitmap, a cheap continuous-corner clip and no shadow:
+                // shadows need an offscreen pass per icon on every frame while scrolling.
                 Image(uiImage: image)
                     .resizable()
-                    .interpolation(.high)
-                    .scaledToFill()
                     .frame(width: size, height: size)
                     .clipShape(.rect(cornerRadius: size * 0.225, style: .continuous))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: size * 0.225, style: .continuous)
-                            .strokeBorder(.primary.opacity(0.08), lineWidth: 0.5)
-                    }
-                    .shadow(color: .black.opacity(0.15), radius: 4, y: 2)
                     .accessibilityHidden(true)
             } else {
                 AppIconView(symbol: shortcut.symbol, colorHex: shortcut.colorHex, size: size)

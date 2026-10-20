@@ -200,15 +200,15 @@ struct FilterChip: View {
     let action: () -> Void
 
     var body: some View {
-        Button(title, action: action)
-            .buttonStyle(isSelected ? AnyButtonStyle(.glassProminent) : AnyButtonStyle(.glass))
-            .accessibilityAddTraits(isSelected ? .isSelected : [])
+        // Two concrete branches rather than a type-erased (AnyView) style,
+        // which made SwiftUI do slow runtime type lookups on every update
+        Group {
+            if isSelected {
+                Button(title, action: action).buttonStyle(.glassProminent)
+            } else {
+                Button(title, action: action).buttonStyle(.glass)
+            }
+        }
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
-}
-
-/// Lets a view switch between glass and prominent glass styles.
-struct AnyButtonStyle: PrimitiveButtonStyle {
-    private let make: (Configuration) -> AnyView
-    init<S: PrimitiveButtonStyle>(_ style: S) { make = { AnyView(style.makeBody(configuration: $0)) } }
-    func makeBody(configuration: Configuration) -> some View { make(configuration) }
 }
