@@ -39,6 +39,7 @@
     "vitest": "^5.0.5"
   },
   "description": "Halo \u2014 Your digital world, beautifully unified. A Liquid Glass-inspired home hub PWA.",
+  "license": "MIT",
   "engines": {
     "node": ">=22.12.0"
   }

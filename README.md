@@ -232,4 +232,8 @@ Details and setup notes for optional integrations are in
 
 ## License
 
-No license has been chosen yet. Until one is added, all rights are reserved.
+Halo is released under the [MIT License](LICENSE).
+
+The license covers Halo's code and original artwork (including the Halo icon). Third-party
+names listed in the app, such as services and App Store apps, belong to their
+respective owners and are referenced only to link to them.
