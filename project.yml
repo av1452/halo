@@ -1,0 +1,94 @@
+# XcodeGen spec. Regenerate the Xcode project with `xcodegen generate`.
+name: Halo
+options:
+  bundleIdPrefix: io.github.av1452
+  deploymentTarget:
+    iOS: "26.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    DEVELOPMENT_TEAM: ""   # Set your (free) Personal Team in Xcode to run on a device
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+
+targets:
+  Halo:
+    type: application
+    platform: iOS
+    sources:
+      - path: Halo
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.av1452.halo
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_ENTITLEMENTS: Halo/Halo.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Halo
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+        INFOPLIST_KEY_NSHomeKitUsageDescription: Halo shows and controls the accessories, rooms and scenes in your Apple Home.
+        INFOPLIST_KEY_NSAppleMusicUsageDescription: Halo shows what's playing in the Music app and lets you control playback.
+        INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription: Halo shows your upcoming events on the Home dashboard.
+        INFOPLIST_KEY_NSRemindersFullAccessUsageDescription: Halo shows and completes your reminders on the Home dashboard.
+        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: Halo uses your approximate location only to show local weather.
+    info:
+      path: Halo/Info.plist
+      properties:
+        # Schemes Halo may check with canOpenURL before offering to open an Apple app
+        LSApplicationQueriesSchemes:
+          - music
+          - shortcuts
+          - maps
+          - message
+          - calshow
+          - x-apple-reminderkit
+          - mobilenotes
+          - photos-redirect
+          - podcasts
+          - videos
+          - applenews
+          - ibooks
+          - x-apple-health
+          - facetime
+          - itms-apps
+    scheme:
+      testTargets:
+        - HaloTests
+        - HaloUITests
+      gatherCoverageData: true
+
+  HaloTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: HaloTests
+    dependencies:
+      - target: Halo
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.av1452.halo.tests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Halo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Halo"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+
+  HaloUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: HaloUITests
+    dependencies:
+      - target: Halo
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.av1452.halo.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: Halo

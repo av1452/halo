@@ -35,3 +35,9 @@ playwright-report
 blob-report
 /test-results/
 /playwright/.cache/
+
+# Xcode
+xcuserdata/
+DerivedData/
+*.xcresult
+*.xcuserstate
